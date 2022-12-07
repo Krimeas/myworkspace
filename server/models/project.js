@@ -3,12 +3,12 @@ const dateFormat = require('../utils/dateFormat');
 //project_name, project_description, owner, members, tasks, comments, due_date
 
 const projectSchema = new Schema({
-    project_name: {
+    projectName: {
         type: String,
         required: true,
         //maybe make unique
     },
-    project_description: {
+    projectDescription: {
         type: String,
         required: true,
         maxlength: 300
@@ -37,7 +37,7 @@ const projectSchema = new Schema({
             ref: 'Comment'
         }
     ],
-    due_date: {
+    dueDate: {
         type: Date,
         get: (timestamp) => dateFormat(timestamp)
     }

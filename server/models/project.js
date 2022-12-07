@@ -41,7 +41,11 @@ const projectSchema = new Schema({
         type: Date,
         get: (timestamp) => dateFormat(timestamp)
     }
-});
+},
+{
+    timestamps: true
+}
+);
 
 const Project = model('Project', projectSchema);
 

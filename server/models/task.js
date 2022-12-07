@@ -17,6 +17,9 @@ const taskSchema = new Schema(
             ref: 'Project'
         }
     ]
+},
+{
+    timestamps: true
 }
 )
 

@@ -19,14 +19,10 @@ Queries:
 Mutations: Should we just put CRUD stuff in there? Why is login there too? Do parent, context, args mean the same things as Query?
     createUser
     createProjectComment
-    createUserComment
-    createProject
-    createTask
-    addProjectMember
-    updateProjectComments
-    updateUserProjects
-    updateUserCoworkers
-    updateUserComments
+    createUserComment ->   updateUserComments
+    createProject  ->  updateProjectComments
+    createTask  -> updateProjectTasks
+    addProjectMember -> updateUserProjects -> updateUserCoworkers
     updateUserAboutMe
     User and Project comments are comments made to the user/project
 */
@@ -110,6 +106,7 @@ const resolvers = {
                 );
                 return comment;
             }
+            throw new AuthenticationError('You need to be logged in!');
         },
 
 
@@ -126,14 +123,18 @@ const resolvers = {
                 );
                 return comment;
             }
+            throw new AuthenticationError('You need to be logged in!');
         },
 
         createProject: async (parent, { projectName, projectDescription, owner }) => {
-            const project = await Project.create({ projectName, projectDescription, owner });
-            return { project };
+            if(context.user) {
+                const project = await Project.create({ projectName, projectDescription, owner });
+                return project;
+            }
+            throw new AuthenticationError('You need to be logged in!');
         },
-        
-        createTask: async (parent, {taskName, projectName}, context) => {
+
+        createTask: async (parent, { taskName, projectName }, context) => {
             if (context.user) {
                 const task = await Task.create({
                     taskName,
@@ -141,28 +142,48 @@ const resolvers = {
                 });
 
                 await Project.findOneAndUpdate(
-                    {projectName},
-                    {$addToSet: {task: task._id}}
+                    { projectName },
+                    { $addToSet: { task: task._id } }
                 )
+                return task;
             }
+            throw new AuthenticationError('You need to be logged in!');
         },
 
-        addProjectMember: async (parent, { projectName, member}, context) => {
+        addProjectMember: async (parent, { projectName, member }, context) => {
             if (context.user) {
-                
+
                 await User.findOneAndUpdate(
-                    {username: member.username},
-                    {$addToSet: {projects: projectName}}
+                    { username: member.username },
+                    { $addToSet: { projects: projectName } } //may have to user project id
                 )
 
-                await Project.findOneAndUpdate(
-                    {projectName: projectName},
-                    {$addToSet: { members: member._id }}
+                await User.finOneAndUpdate(
+                    { username: context.user.username},
+                    { $addToSet: { coworkers: member._id}}
+                )
+
+                const projectMember = await Project.findOneAndUpdate(
+                    { projectName: projectName },
+                    { $addToSet: { members: member._id } }
                 );
-                return comment;
+                return projectMember;
             }
+            throw new AuthenticationError('You need to be logged in!');
         },
 
-    }
+        updateUserAboutMe: async (parent, {aboutText}, context) => {
+            if(context.user) {
+                const user = await User.findOneAndUpdate(
+                    { username: context.user.username},
+                    { aboutMe: aboutText}
+                )
+                return user;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        }
+    },
+
+}
 
 module.exports = resolvers;

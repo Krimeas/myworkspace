@@ -29,8 +29,33 @@ const resolvers = {
         GetUserCommentsByUsername: async (parent, {username}) => {
             const params = username? {username: username, userRecipient:{$ne:null}} : {};
             return Comment.find(params).sort({createdAt: -1});
-        } 
-
+        },
+        GetProjectCommentsByUsername: async (parent, {username}) => {
+            const params = username? {username: username, projectRecipient:{$ne:null}} : {};
+            return Comment.find(params).sort({createdAt: -1}); 
+        }, 
+        GetUserFriends: async (parent, {username}) => {
+            return User.findOne({username}).populate('friends');
+        },
+        GetUserProjects: async (parent, {username}) => {
+            return User.findOne({username}).populate('projects');
+        },
+        GetProjects: async () => {
+            return Project.find();
+        },
+        GetProjectById: async (parent, {projectId}) => {
+            return Project.findOne({_id: projectId});
+        },
+        GetProjectMembers: async (parent, {projectName}) => {
+            return Project.findOne({projectName}).populate('members');
+        },
+        GetProjectTasks: async (parent, {projectName}) => {
+            return Project.findOne({projectName}).populate('tasks');
+        },
+        GetFriendComments: async (parent, {username}) => {
+            const friends = User.findOne({username}).populate('friends');
+            return Comment.
+        },
     },
 
     Mutation: {

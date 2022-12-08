@@ -63,6 +63,9 @@ const resolvers = {
         GetProjectTasks: async (parent, {projectName}) => {
             return Project.findOne({projectName}).populate('tasks');
         },
+        me: async (parent, args, context) => {
+            return context.currentUser
+        },
         GetFriendComments: async (parent, {username}) => {
             const comments = [];
             const user = User.findOne({username}).populate('coworkers');

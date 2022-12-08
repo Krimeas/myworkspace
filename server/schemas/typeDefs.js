@@ -11,16 +11,16 @@ const typeDefs = gql`
         lastname: String
         aboutme: String
         profilepicture: String
-        friends: [user]!
-        projects: [project]!
-        comments: [comment]!
+        coworkers: [User]!
+        projects: [Project]!
+        comments: [Comment]!
         
     }
 
     type Task {
         _id: ID
         taskName: String
-        project: [project]!
+        project: [Project]!
     }
     
     type Project {
@@ -29,8 +29,8 @@ const typeDefs = gql`
         projectDescription: String
         owner: [user]!
         members :[user]!
-        tasks: [task]!
-        comments: [comment]!
+        tasks: [Task]!
+        comments: [Comment]!
         dueDate: Date
     }
 
@@ -38,8 +38,8 @@ const typeDefs = gql`
         _id: ID
         username: String
         commentText: String
-        userRecipient: [user]!
-        projectRecipient: [project]!
+        userRecipient: [User]!
+        projectRecipient: [Project]!
     }
 
     type Query {
@@ -54,6 +54,19 @@ const typeDefs = gql`
         GetProjectTasks(projectName: String!): Project
         GetFriendComments(username: String!): [Comment]
         me: User
-      }
+    }
+
+    type Mutation {
+        createUser(username: String!, email: String!, password: String!, firstName: String!, lastName: String!): User
+        login(email: String!, password: String!): User
+        createProjectComment(commentText: String!, projectName: String!): Comment
+        createUserComment(commentText: String!): Comment
+        createProject(projectName: String!, projectDescription: String!, owner: User!): Project
+        createTask(taskName: String!, projectName: String!): Task
+        addProjectMember(projectName: String!, member: User!): Project
+        updateUserAboutMe(aboutText: String!): User
+        updateProjectDescription(projectName: String!, projectDescription: String!): Project
+        
+    }
       
 `

@@ -29,21 +29,21 @@ const userSchema = new Schema(
             // add special characters if time
         },
 
-        firstname:
+        firstName:
 
         {
             type: String,
             required: true
         },
 
-        lastname:
+        lastName:
 
         {
             type: String,
             required: true
         },
 
-        aboutme:
+        aboutMe:
 
         {
             type: String,
@@ -58,7 +58,7 @@ const userSchema = new Schema(
             required: false
         },
 
-        friends:
+        coworkers:
         [
             {
                 type: Schema.Types.ObjectId,

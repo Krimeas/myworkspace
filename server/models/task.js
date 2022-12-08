@@ -3,6 +3,11 @@ const {Schema, model } = require('mongoose');
 // task name, task description(maybe later), project
 const taskSchema = new Schema(
 {
+    username:
+    {
+        type: String,
+        required: true,
+    },
 
     taskName:
     {
@@ -16,7 +21,25 @@ const taskSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Project'
         }
-    ]
+    ],
+
+    // open, in progess, completed
+
+    isOpen: {
+        type: Boolean,
+        default: true
+    },
+
+    isInProgress: {
+        type: Boolean,
+        default: false
+    },
+
+    isComplete: {
+        type: Boolean,
+        default: false
+    },
+
 },
 {
     timestamps: true

@@ -59,7 +59,7 @@ const resolvers = {
         GetProjectTasks: async (parent, { projectName }) => {
             return Project.findOne({ projectName }).populate('tasks');
         },
-        GetFriendComments: async (parent, { username }) => {
+        GetFriendComments: async (parent, {username}) => {
             const comments = [];
             const user = User.findOne({ username }).populate('coworkers');
             for (const coworker in user.coworkers) {

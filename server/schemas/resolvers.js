@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Comment, Project, Task, User} = require('../models');
+const { Comment, Project, Task, User } = require('../models');
 const { signToken } = require('../utils/auth');
 
 /*
@@ -34,52 +34,135 @@ Mutations: Should we just put CRUD stuff in there? Why is login there too? Do pa
 const resolvers = {
     Query: {
         //what do parents, context, args params do??????????
-        GetUserById: async (parent, {userId}) => {
-            return User.findOne({_id: userId});
+        GetUserById: async (parent, { userId }) => {
+            return User.findOne({ _id: userId });
         },
-        GetUserCommentsByUsername: async (parent, {username}) => {
-            const params = username? {username: username, userRecipient:{$ne:null}} : {};
-            return Comment.find(params).sort({createdAt: -1});
+        GetUserCommentsByUsername: async (parent, { username }) => {
+            const params = username ? { username: username, userRecipient: { $ne: null } } : {};
+            return Comment.find(params).sort({ createdAt: -1 });
         },
-        GetProjectCommentsByUsername: async (parent, {username}) => {
-            const params = username? {username: username, projectRecipient:{$ne:null}} : {};
-            return Comment.find(params).sort({createdAt: -1}); 
-        }, 
-        GetUserCoworkers: async (parent, {username}) => {
-            return User.findOne({username}).populate('coworkers');
+        GetProjectCommentsByUsername: async (parent, { username }) => {
+            const params = username ? { username: username, projectRecipient: { $ne: null } } : {};
+            return Comment.find(params).sort({ createdAt: -1 });
         },
-        GetUserProjects: async (parent, {username}) => {
-            return User.findOne({username}).populate('projects');
+        GetUserCoworkers: async (parent, { username }) => {
+            return User.findOne({ username }).populate('coworkers');
+        },
+        GetUserProjects: async (parent, { username }) => {
+            return User.findOne({ username }).populate('projects');
         },
         GetProjects: async () => {
             return Project.find();
         },
-        GetProjectById: async (parent, {projectId}) => {
-            return Project.findOne({_id: projectId});
+        GetProjectById: async (parent, { projectId }) => {
+            return Project.findOne({ _id: projectId });
         },
-        GetProjectMembers: async (parent, {projectName}) => {
-            return Project.findOne({projectName}).populate('members');
+        GetProjectMembers: async (parent, { projectName }) => {
+            return Project.findOne({ projectName }).populate('members');
         },
-        GetProjectTasks: async (parent, {projectName}) => {
-            return Project.findOne({projectName}).populate('tasks');
+        GetProjectTasks: async (parent, { projectName }) => {
+            return Project.findOne({ projectName }).populate('tasks');
         },
-        GetFriendComments: async (parent, {username}) => {
+        GetFriendComments: async (parent, { username }) => {
             const comments = [];
-            const user = User.findOne({username}).populate('coworkers');
-            for(const coworker in user.coworkers) {
-                comments.push(Comment.find({username: coworker.username, userRecipient:{$ne:null}}));
+            const user = User.findOne({ username }).populate('coworkers');
+            for (const coworker in user.coworkers) {
+                comments.push(Comment.find({ username: coworker.username, userRecipient: { $ne: null } }));
             }
             return comments;
         },
     },
 
     Mutation: {
-        createUser: async (parent, {username, email, password, firstName, lastName}) => {
-            const user = await User.create({username, email, password, firstName, lastName});
+        createUser: async (parent, { username, email, password, firstName, lastName }) => {
+            const user = await User.create({ username, email, password, firstName, lastName });
             const token = signToken(user);
             return { token, user };
-        }
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+
+            const token = signToken(user);
+
+            return { token, user };
+        },
+
+        createProjectComment: async (parent, { commentText, projectName }, context) => {
+            if (context.user) {
+                const comment = await comment.create({
+                    commentText,
+                    commentAuthor: context.user.username,
+                });
+
+                await Project.findOneAndUpdate(
+                    { projectName: projectName },
+                    { $addToSet: { comment: comment._id } }
+                );
+                return comment;
+            }
+        },
+
+
+        createUserComment: async (parent, { commentText }, context) => {
+            if (context.user) {
+                const comment = await Comment.create({
+                    commentText,
+                    commentAuthor: context.user.username,
+                });
+
+                await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { comment: comment._id } }
+                );
+                return comment;
+            }
+        },
+
+        createProject: async (parent, { projectName, projectDescription, owner }) => {
+            const project = await Project.create({ projectName, projectDescription, owner });
+            return { project };
+        },
+        
+        createTask: async (parent, {taskName, projectName}, context) => {
+            if (context.user) {
+                const task = await Task.create({
+                    taskName,
+                    taskAuthor: context.user.username,
+                });
+
+                await Project.findOneAndUpdate(
+                    {projectName},
+                    {$addToSet: {task: task._id}}
+                )
+            }
+        },
+
+        addProjectMember: async (parent, { projectName, member}, context) => {
+            if (context.user) {
+                
+                await User.findOneAndUpdate(
+                    {username: member.username},
+                    {$addToSet: {projects: projectName}}
+                )
+
+                await Project.findOneAndUpdate(
+                    {projectName: projectName},
+                    {$addToSet: { members: member._id }}
+                );
+                return comment;
+            }
+        },
+
     }
-}
 
 module.exports = resolvers;

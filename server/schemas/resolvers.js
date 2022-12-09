@@ -159,7 +159,7 @@ const resolvers = {
                     { $addToSet: { projects: projectName } } //may have to user project id
                 )
 
-                await User.finOneAndUpdate(
+                await User.findOneAndUpdate(
                     { username: context.user.username},
                     { $addToSet: { coworkers: member._id}}
                 )

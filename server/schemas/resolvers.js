@@ -17,12 +17,12 @@ Queries:
 */
 /*
 Mutations: Should we just put CRUD stuff in there? Why is login there too? Do parent, context, args mean the same things as Query?
-    createUser
-    createProjectComment
-    createUserComment ->   updateUserComments
-    createProject  ->  updateProjectComments
-    createTask  -> updateProjectTasks
-    addProjectMember -> updateUserProjects -> updateUserCoworkers
+    createUser/
+    createUserComment/ ->   updateUserComments/
+    createProjectComment/
+    createProject/  ->  updateProjectComments/
+    createTask/  -> updateProjectTasks/
+    addProjectMember/ -> updateUserProjects -> updateUserCoworkers
     updateUserAboutMe
     User and Project comments are comments made to the user/project
 */

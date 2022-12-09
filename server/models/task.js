@@ -1,4 +1,4 @@
-const {Schema, model } = require('mongoose');
+const {Schema, model} = require('mongoose');
 
 // task name, task description(maybe later), project
 const taskSchema = new Schema(

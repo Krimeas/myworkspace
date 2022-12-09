@@ -15,25 +15,25 @@ const projectSchema = new Schema({
     },
     owner: [
         {
-            type: Schema.Type.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'User'
         },
     ],
     members: [
         {
-            type: Schema.Type.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'User'
         }
     ],
     tasks: [
         {
-            type: Schema.Type.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'Task'
         }
     ],
     comments: [
         {
-            type: Schema.Type.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'Comment'
         }
     ],

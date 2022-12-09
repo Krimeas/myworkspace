@@ -11,8 +11,8 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_USERCOMMENTS = gql`
-  query getMessages {
-    Messages {
+  query getUserCommentsByUsername {
+    userComment {
       _id
       messageText
       messageAuthor
@@ -21,9 +21,9 @@ export const QUERY_USERCOMMENTS = gql`
   }
 `;
 
-export const ADD_PROJECT = gql`
+export const QUERY_PROJECT = gql`
   query getProjects {
-    Projects {
+    Project {
       _id
       projectTitle
       createdAt
@@ -32,8 +32,8 @@ export const ADD_PROJECT = gql`
 `;
 
 export const QUERY_PROJECTCOMMENTS = gql`
-  query getMessages {
-    Messages {
+  query getComments {
+    Comment {
       _id
       messageText
       messageAuthor
@@ -42,9 +42,9 @@ export const QUERY_PROJECTCOMMENTS = gql`
   }
 `;
 
-export const ADD_PROJECTTASKS = gql`
+export const QUERY_PROJECTTASKS = gql`
   query getTasks {
-    Tasks {
+    Task {
       _id
       taskText
       createdAt

@@ -12,9 +12,9 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+export const CREATE_USER = gql`
+  mutation createUser($username: String!, $email: String!, $password: String!) {
+    createUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -24,9 +24,9 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_USERCOMMENT = gql`
-  mutation addMessage($messageText: String!) {
-    addMessage(messageText: $messageText) {
+export const CREATE_USERCOMMENT = gql`
+  mutation createUserComment($messageText: String!) {
+    createUserComment(messageText: $messageText) {
       _id
       messageText
       messageAuthor
@@ -35,19 +35,9 @@ export const ADD_USERCOMMENT = gql`
   }
 `;
 
-export const ADD_PROJECT = gql`
-  mutation addProject($projectTitle: String!) {
-    addProject(projectTitle: $projectTitle) {
-      _id
-      projectTitle
-      createdAt
-    }
-  }
-`;
-
-export const ADD_PROJECTCOMMENT = gql`
-  mutation addMessage($messageText: String!) {
-    addMessage(messageText: $messageText) {
+export const UPDATE_USERCOMMENT = gql`
+  mutation updateUserComment($messageText: String!) {
+    updateUserComment(messageText: $messageText) {
       _id
       messageText
       messageAuthor
@@ -56,19 +46,41 @@ export const ADD_PROJECTCOMMENT = gql`
   }
 `;
 
-export const ADD_PROJECTTASK = gql`
-  mutation addTask($taskText: String!) {
-    addTask(taskText: $taskText) {
+export const CREATE_PROJECT = gql`
+  mutation createProject($projectName: String!) {
+    createProject(projectName: $projectTitle) {
       _id
-      taskText
+      projectName
       createdAt
     }
   }
 `;
 
-export const DELETE_PROJECTTASK = gql`
-  mutation deleteTask($taskText: String!) {
-    deleteTask(taskText: $taskText) {
+export const CREATE_PROJECTCOMMENT = gql`
+  mutation createProjectComment($messageText: String!) {
+    createProjectComment(messageText: $messageText) {
+      _id
+      messageText
+      messageAuthor
+      createdAt
+    }
+  }
+`;
+
+export const UPDATE_PROJECTCOMMENT = gql`
+  mutation updateProjectComment($messageText: String!) {
+    updateProjectComment(messageText: $messageText) {
+      _id
+      messageText
+      messageAuthor
+      createdAt
+    }
+  }
+`;
+
+export const CREATE_TASK = gql`
+  mutation createTask($taskText: String!) {
+    createTask(taskText: $taskText) {
       _id
       taskText
       createdAt
@@ -77,11 +89,57 @@ export const DELETE_PROJECTTASK = gql`
 `;
 
 export const UPDATE_PROJECTTASK = gql`
-  mutation updateTask($taskText: String!) {
-    updateTask(taskText: $taskText) {
+  mutation updateProjectTask($taskText: String!) {
+    updateProjectTask(taskText: $taskText) {
       _id
       taskText
       createdAt
+    }
+  }
+`;
+
+export const DELETE_PROJECTTASK = gql`
+  mutation deleteProjectTask($taskText: String!) {
+    deleteProjectTask(taskText: $taskText) {
+      _id
+      taskText
+      createdAt
+    }
+  }
+`;
+
+export const ADD_PROJECTMEMBER = gql`
+  mutation addProjectMemeber($) {
+    addProjectMember() {
+      _id
+
+    }
+  }
+`;
+
+export const UPDATE_USERPROJECTS = gql`
+  mutation updateUserProjects($) {
+    updateUserProjects() {
+      _id
+
+    }
+  }
+`;
+
+export const UPDATE_USERCOWORKERS = gql`
+  mutation updateUserCoworkers($) {
+    updateUserCoworkers() {
+      _id
+
+    }
+  }
+`;
+
+export const UPDATE_USERABOUTME = gql`
+  mutation updateUserAboutMe($) {
+    updateUserAboutMe() {
+      _id
+
     }
   }
 `;

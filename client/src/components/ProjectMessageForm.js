@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_COMMENT } from '../../utils/mutations';
+import { CREATE_PROJECTCOMMENT } from '../../utils/mutations';
 import { QUERY_PROJECTCOMMENTS, QUERY_PROJECT } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
@@ -12,14 +12,14 @@ const myFeedForm = () => {
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT, {
-    update(cache, { data: { addComment } }) {
+  const [createProjectComment, { error }] = useMutation(CREATE_PROJECTCOMMENT, {
+    update(cache, { data: { createProjectComment } }) {
       try {
         const { comments } = cache.readQuery({ query: QUERY_PROJECTCOMMENTS });
 
         cache.writeQuery({
           query: QUERY_PROJECTCOMMENTS,
-          data: { comments: [addComment, ...comments] },
+          data: { comments: [createProjectComment, ...comments] },
         });
       } catch (e) {
         console.error(e);
@@ -29,7 +29,7 @@ const myFeedForm = () => {
       const { project } = cache.readQuery({ query: QUERY_PROJECT });
       cache.writeQuery({
         query: QUERY_PROJECT,
-        data: { project: { ...project, comments: [...project.comments, addComment] } },
+        data: { project: { ...project, comments: [...project.comments, createProjectComment] } },
       });
     },
   });
@@ -38,7 +38,7 @@ const myFeedForm = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addComment({
+      const { data } = await createProjectComment({
         variables: {
           commentText,
           commentAuthor: Auth.getProfile().data.username,

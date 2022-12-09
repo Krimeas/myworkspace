@@ -21,6 +21,9 @@ const typeDefs = gql`
         _id: ID
         taskName: String
         project: [Project]!
+        isOpen: Boolean
+        isInProgress: Boolean
+        isComplete: Boolean
     }
     
     type Project {

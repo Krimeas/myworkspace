@@ -127,7 +127,6 @@ const typeDefs = gql`
         createTask(taskName: String!, projectName: String!): Task
         addProjectMember(projectName: String!, member: UserInput!): Project
         updateUserAboutMe(aboutText: String!): User
-        updateProjectDescription(projectName: String!, projectDescription: String!): Project
       }
 `;
 

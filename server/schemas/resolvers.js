@@ -70,6 +70,8 @@ const resolvers = {
         },
     },
 
+    //commented out authentication for apollo sandbox testing, make sure to uncomment it out later.
+
     Mutation: {
         createUser: async (parent, { username, email, password, firstName, lastName }) => {
             const user = await User.create({ username, email, password, firstName, lastName });

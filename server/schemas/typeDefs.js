@@ -123,7 +123,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         createProjectComment(commentText: String!, projectName: String!): Comment
         createUserComment(commentText: String!): Comment
-        createProject(projectName: String!, projectDescription: String!, owner: UserInput!): Project
+        createProject(projectName: String!, projectDescription: String!, ownerName: String!): Project
         createTask(taskName: String!, projectName: String!): Task
         addProjectMember(projectName: String!, member: UserInput!): Project
         updateUserAboutMe(aboutText: String!): User

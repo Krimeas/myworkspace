@@ -8,13 +8,13 @@ import Auth from "../utils/auth";
 const Login = (props) => {
     const [formState, SetFormState] = useState({ email: '', password: '' });
     const [Login, { error, data }] = useMutation(LOGIN_USER);
-}
+
 
 const handleChange = (event) => {
     const { name, value } = event.target;
 
     SetFormState({
-        formState,
+        ...formState,
         [name]: value,
     });
 };
@@ -65,13 +65,13 @@ return (
 
           
             <div class="form-outline mb-4">
-                <input type="email" id="loginName" class="form-control" />
+                <input onChange={handleChange} value={formState.email} name="email" type="email" id="loginName" class="form-control" />
                 <label class="form-label" for="loginName">Email or username</label>
             </div>
 
             
             <div class="form-outline mb-4">
-                <input type="password" id="loginPassword" class="form-control" />
+                <input onChange={handleChange} value={formState.password} name="password" type="password" id="loginPassword" class="form-control" />
                 <label class="form-label" for="loginPassword">Password</label>
             </div>
 
@@ -167,6 +167,6 @@ return (
     </div>
 </div>
 );
-
+}
 
 export default Login;

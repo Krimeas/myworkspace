@@ -17,12 +17,12 @@ Queries:
 */
 /*
 Mutations: Should we just put CRUD stuff in there? Why is login there too? Do parent, context, args mean the same things as Query?
-    createUser
-    createProjectComment
-    createUserComment ->   updateUserComments
-    createProject  ->  updateProjectComments
-    createTask  -> updateProjectTasks
-    addProjectMember -> updateUserProjects -> updateUserCoworkers
+    createUser/
+    createUserComment/ ->   updateUserComments/
+    createProjectComment/
+    createProject/  ->  updateProjectComments/
+    createTask/  -> updateProjectTasks/
+    addProjectMember/ -> updateUserProjects -> updateUserCoworkers
     updateUserAboutMe
     User and Project comments are comments made to the user/project
 */
@@ -59,7 +59,7 @@ const resolvers = {
         GetProjectTasks: async (parent, { projectName }) => {
             return Project.findOne({ projectName }).populate('tasks');
         },
-        GetFriendComments: async (parent, { username }) => {
+        GetFriendComments: async (parent, {username}) => {
             const comments = [];
             const user = User.findOne({ username }).populate('coworkers');
             for (const coworker in user.coworkers) {

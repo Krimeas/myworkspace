@@ -129,7 +129,7 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        createProject: async (parent, { projectName, projectDescription, ownerName }) => {
+        createProject: async (parent, { projectName, projectDescription, ownerName }, context) => {
             if(context.user) {
                 const owner = User.findOne({username: ownerName});
                 const project = await Project.create({ projectName, projectDescription, owner });

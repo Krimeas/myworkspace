@@ -1,4 +1,4 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
 
@@ -51,7 +51,7 @@ const userSchema = new Schema(
             maxlength: 250,
         },
 
-        profilepicture:
+        profilePicture:
 
         {
             type: String,
@@ -61,8 +61,7 @@ const userSchema = new Schema(
         coworkers:
         [
             {
-                type: Schema.Types.ObjectId,
-                ref: "User",
+                type: String
             }
         ],
 
@@ -81,6 +80,8 @@ const userSchema = new Schema(
                 ref: "Comment",
             }
         ],
+
+        //maybe add tasks
     }
 );
 
@@ -98,5 +99,5 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-const User = model('User', UserSchema);
+const User = model('User', userSchema);
 module.exports = User;

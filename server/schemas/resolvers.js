@@ -132,18 +132,20 @@ const resolvers = {
         createProject: async (parent, { projectName, projectDescription, ownerName }, context) => {
             if(context.user) {
                 const owner = await User.findOne({username: ownerName});
-                const project = await Project.create({ projectName, projectDescription, owner});
+                const project = await Project.create({ projectName, projectDescription, owner });
                 return project;
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-
+        
         createTask: async (parent, { taskName, projectName }, context) => {
+            console.log(context.user);
             if (context.user) {
                 const task = await Task.create({
                     taskName,
-                    taskAuthor: context.user.username,
+                    username: context.user.username,
                 });
+                console.log('--------------------------------------------------------------------')
 
                 await Project.findOneAndUpdate(
                     { projectName },

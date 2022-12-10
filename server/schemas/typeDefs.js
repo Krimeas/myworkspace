@@ -44,8 +44,8 @@ const typeDefs = gql`
         _id: ID
         username: String
         commentText: String
-        userRecipient: [User]!
-        projectRecipient: [Project]!
+        userRecipient: String
+        projectRecipient: String
         createdAt: String
         updatedAt: String
     }
@@ -115,6 +115,7 @@ const typeDefs = gql`
         GetProjectMembers(projectName: String!): [User]
         GetProjectTasks(projectName: String!): [Task]
         GetFriendComments(username: String!): [Comment]
+        GetProjectComments(projectName: String!): Project
         me: User
       }
 

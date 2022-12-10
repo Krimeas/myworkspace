@@ -68,6 +68,9 @@ const resolvers = {
             }
             return comments;
         },
+        GetProjectComments: async (parent, {projectName}) => {
+            return Project.findOne({ projectName }).populate('comments');
+        }
     },
 
     //commented out authentication for apollo sandbox testing, make sure to uncomment it out later.
@@ -97,15 +100,20 @@ const resolvers = {
         },
 
         createProjectComment: async (parent, { commentText, projectName }, context) => {
+            console.log(context.user);
             if (context.user) {
-                const comment = await comment.create({
+                // const project = Project.findOne({
+                //     projectName
+            // });
+                const comment = await Comment.create({
                     commentText,
-                    commentAuthor: context.user.username,
+                    projectRecipient: projectName,
+                    username: context.user.username,
                 });
-
+                console.log('--------------------------------------------------------------------')
                 await Project.findOneAndUpdate(
                     { projectName: projectName },
-                    { $addToSet: { comment: comment._id } }
+                    { $addToSet: { comments: comment._id } }
                 );
                 return comment;
             }
@@ -145,7 +153,7 @@ const resolvers = {
                     taskName,
                     username: context.user.username,
                 });
-                console.log('--------------------------------------------------------------------')
+                
 
                 await Project.findOneAndUpdate(
                     { projectName },

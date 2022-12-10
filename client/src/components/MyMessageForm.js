@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { CREATE_USERCOMMENT } from '../../utils/mutations';
-import { QUERY_USERCOMMENTS, QUERY_USER } from '../../utils/queries';
+import { CREATE_USERCOMMENT } from '../utils/mutations';
+import { QUERY_USERCOMMENTS, QUERY_USER } from '../utils/queries';
 
-import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 
-const myFeedForm = () => {
+const MyMessageForm = () => {
   const [commentText, setCommentText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
@@ -111,4 +111,4 @@ const myFeedForm = () => {
   );
 };
 
-export default myFeedForm;
+export default MyMessageForm;

@@ -21,7 +21,7 @@ export const QUERY_USERCOMMENTS = gql`
   }
 `;
 
-export const QUERY_PROJECT = gql`
+export const QUERY_PROJECTS = gql`
   query getProjects {
     Project {
       _id

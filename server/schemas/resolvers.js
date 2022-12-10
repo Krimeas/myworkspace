@@ -98,7 +98,7 @@ const resolvers = {
 
         createProjectComment: async (parent, { commentText, projectName }, context) => {
             if (context.user) {
-                const comment = await comment.create({
+                const comment = await Comment.create({
                     commentText,
                     commentAuthor: context.user.username,
                 });

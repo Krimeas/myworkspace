@@ -31,7 +31,7 @@ const typeDefs = gql`
         _id: ID
         projectName: String
         projectDescription: String
-        owner: [User]!
+        owner: User!
         members :[User]!
         tasks: [Task]!
         comments: [Comment]!
@@ -73,7 +73,7 @@ const typeDefs = gql`
         _id: ID
         projectName: String
         projectDescription: String
-        owner: [UserInput]!
+        owner: UserInput!
         members :[UserInput]!
         tasks: [TaskInput]!
         comments: [CommentInput]!

@@ -13,12 +13,11 @@ const projectSchema = new Schema({
         required: true,
         maxlength: 300
     },
-    owner: [
+    owner:
         {
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-    ],
     members: [
         {
             type: Schema.Types.ObjectId,

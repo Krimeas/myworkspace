@@ -6,7 +6,7 @@ import React from 'react';
 
 // import { QUERY_USERCOMMENTS, QUERY_PROJECTS} from '../utils/queries';
 
-const User = () => {
+const Projects = () => {
   // const { loading, data } = useQuery(QUERY_USERCOMMENTS, QUERY_PROJECTS);
   // const comments = data?.comments || [];
   // const projects = data?.projects || [];
@@ -14,7 +14,7 @@ const User = () => {
   return (
     <main>
       {/* My Messages/comments should hug the left side of the page, likely col-3 */}
-      <h1>THIS IS THE USERS PAGE</h1>
+      <h1>THIS IS THE PROJECTS PAGE</h1>
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
@@ -50,4 +50,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Projects;

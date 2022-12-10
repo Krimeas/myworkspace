@@ -5,7 +5,7 @@ const UserCommentList = ({
   usercomments,
   showUsername = true,
 }) => {
-  if (!usercomment.length) {
+  if (!usercomments.length) {
     return <h3>No one has posted a comment in this users profile yet</h3>;
   }
 
@@ -23,13 +23,13 @@ const UserCommentList = ({
                   {/* Need to associate user Name in here - pull data how?  In the map?  Likely needed in user model?  user name or user title? */}
                   {usercomment.usercommentAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    posted this about {username} {usercomment.createdAt}
+                    posted this about {usercomment.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You commented on {username} {usercomment.createdAt}
+                    You commented on {usercomment.createdAt}
                   </span>
                 </>
               )}

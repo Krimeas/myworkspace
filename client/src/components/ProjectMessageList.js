@@ -23,13 +23,13 @@ const ProjectCommentList = ({
                   {/* Need to associate Project Name in here - pull data how?  In the map?  Likely needed in project model?  Project name or project title? */}
                   {projectcomment.projectcommentAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    posted this about {projectname} {projectcomment.createdAt}
+                    posted this about {projectName} {projectcomment.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You commented on {projectname} {projectcomment.createdAt}
+                    You commented on {projectName} {projectcomment.createdAt}
                   </span>
                 </>
               )}

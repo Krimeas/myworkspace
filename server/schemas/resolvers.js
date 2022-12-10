@@ -27,6 +27,7 @@ Mutations: Should we just put CRUD stuff in there? Why is login there too? Do pa
     User and Project comments are comments made to the user/project
 */
 //login is probably updating a token for a user which is why it is considered a mutation
+//add a check to make sure project owner == context.user.username before doing mutations for more authentication
 const resolvers = {
     Query: {
         //what do parents, context, args params do??????????
@@ -59,6 +60,12 @@ const resolvers = {
         GetProjectTasks: async (parent, { projectName }) => {
             return Project.findOne({ projectName }).populate('tasks');
         },
+        me: async (parent, args, context) => {
+            if(context.user) {
+                return User.findOne({_id: context.user._id});
+            }
+            throw new AuthenticationError('Incorrect credentials');
+        },
         GetFriendComments: async (parent, {username}) => {
             const comments = [];
             const user = User.findOne({ username }).populate('coworkers');
@@ -67,6 +74,9 @@ const resolvers = {
             }
             return comments;
         },
+        GetProjectComments: async (parent, {projectName}) => {
+            return Project.findOne({ projectName }).populate('comments');
+        }
     },
 
     Mutation: {
@@ -94,15 +104,17 @@ const resolvers = {
         },
 
         createProjectComment: async (parent, { commentText, projectName }, context) => {
+            console.log(context.user);
             if (context.user) {
-                const comment = await comment.create({
+                const comment = await Comment.create({
                     commentText,
-                    commentAuthor: context.user.username,
+                    projectRecipient: projectName,
+                    username: context.user.username,
                 });
-
+                console.log('--------------------------------------------------------------------')
                 await Project.findOneAndUpdate(
                     { projectName: projectName },
-                    { $addToSet: { comment: comment._id } }
+                    { $addToSet: { comments: comment._id } }
                 );
                 return comment;
             }
@@ -126,48 +138,56 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        createProject: async (parent, { projectName, projectDescription, owner }) => {
+        createProject: async (parent, { projectName, projectDescription}, context) => {
             if(context.user) {
-                const project = await Project.create({ projectName, projectDescription, owner });
+                const project = await Project.create({ projectName, projectDescription, owner: context.user.username });
+                await User.findOneAndUpdate({username: context.user.username}, { $addToSet: {projects: project._id}})
                 return project;
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-
+        
         createTask: async (parent, { taskName, projectName }, context) => {
+            console.log(context.user);
             if (context.user) {
                 const task = await Task.create({
                     taskName,
-                    taskAuthor: context.user.username,
+                    username: context.user.username,
+                    project: projectName
                 });
+                
 
                 await Project.findOneAndUpdate(
                     { projectName },
-                    { $addToSet: { task: task._id } }
+                    { $addToSet: { tasks: task._id } }
                 )
                 return task;
             }
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        addProjectMember: async (parent, { projectName, member }, context) => {
+        //memberName = username of member
+        addProjectMember: async (parent, { projectName, memberName }, context) => {
             if (context.user) {
 
-                await User.findOneAndUpdate(
-                    { username: member.username },
-                    { $addToSet: { projects: projectName } } //may have to user project id
-                )
-
-                await User.finOneAndUpdate(
-                    { username: context.user.username},
-                    { $addToSet: { coworkers: member._id}}
-                )
-
-                const projectMember = await Project.findOneAndUpdate(
+                //add new member to project
+                const project = await Project.findOneAndUpdate(
                     { projectName: projectName },
-                    { $addToSet: { members: member._id } }
+                    { $addToSet: { members: memberName } }
                 );
-                return projectMember;
+
+                //update member's projects to have the project they were added in && add user as a coworker of member
+                await User.findOneAndUpdate(
+                    { username: memberName },
+                    { $addToSet: { projects: project.id, coworkers: context.user.username } }
+                )
+
+                // add member as a coworker of user
+                await User.findOneAndUpdate(
+                    { username: context.user.username},
+                    { $addToSet: { coworkers: memberName}}
+                )
+                return project;
             }
             throw new AuthenticationError('You need to be logged in!');
         },

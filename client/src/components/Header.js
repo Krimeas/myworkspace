@@ -19,7 +19,7 @@ const Header = () => {
         <div class="navbar-nav me-auto mb-2 mb-lg-0 flex-row justify-space-between-lg">
           <ul >
             <li class="nav-item" >
-            <Link to="/coworkers">
+            <Link to="/users/:username/:coworkers">
               Coworkers
             </Link>
             </li>

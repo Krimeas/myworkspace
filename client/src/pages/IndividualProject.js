@@ -20,7 +20,7 @@ const SingleProject = () => {
   return (
     <main>
       {/* My Messages/comments should hug the left side of the page, likely col-3 */}
-      <h1>THIS IS THE PROJECTS PAGE</h1>
+      <h1>THIS IS THE INDIVIDUAL PROJECTS PAGE</h1>
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"

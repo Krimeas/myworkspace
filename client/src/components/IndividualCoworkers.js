@@ -1,6 +1,6 @@
 import React from "react";
 
-insert styles variable here
+const styles = {
 
 
 const IndividualCoworkers = ({}) => {
@@ -36,7 +36,6 @@ return (
 export default Coworkers
 
 
-const styles ={
 
 /* css for cards */
 
@@ -64,11 +63,11 @@ Card: hover {
 
 }
 
-function Card() {
+function card() {
   return (
     <div style={styles.card}>
-      
-      <div style={styles.heading}>My Workspace </div>
+
+      <div style={styles.heading}>My WorkspaceS</div>
       <div style={styles.content}>
 
       </div>

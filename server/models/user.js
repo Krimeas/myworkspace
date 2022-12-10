@@ -61,8 +61,7 @@ const userSchema = new Schema(
         coworkers:
         [
             {
-                type: Schema.Types.ObjectId,
-                ref: "User",
+                type: String
             }
         ],
 
@@ -81,6 +80,8 @@ const userSchema = new Schema(
                 ref: "Comment",
             }
         ],
+
+        //maybe add tasks
     }
 );
 

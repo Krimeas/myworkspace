@@ -1,4 +1,4 @@
-const { Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 // Author, User Recipient, Project Recipient, commentText 
 const commentSchema = new Schema(
@@ -18,16 +18,16 @@ const commentSchema = new Schema(
         },
 
         userRecipient:
-            
-                {
-                    type: String,
-                },
+
+        {
+            type: String,
+        },
 
         projectRecipient:
-            
-                {
-                    type: String,
-                }
+
+        {
+            type: String,
+        }
 
     },
     {

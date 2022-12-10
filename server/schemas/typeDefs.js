@@ -11,15 +11,16 @@ const typeDefs = gql`
         lastName: String
         aboutMe: String
         profilePicture: String
-        friends: [User]!
+        coworkers: String
         projects: [Project]!
         comments: [Comment]!
     }
 
     type Task {
         _id: ID
-        taskName: String
-        project: [Project]!
+        username: String!
+        taskName: String!
+        project: String!
         isOpen: Boolean
         isInProgress: Boolean
         isComplete: Boolean
@@ -31,8 +32,8 @@ const typeDefs = gql`
         _id: ID
         projectName: String
         projectDescription: String
-        owner: User!
-        members :[User]!
+        owner: String!
+        members: [String]!
         tasks: [Task]!
         comments: [Comment]!
         dueDate: String
@@ -55,65 +56,16 @@ const typeDefs = gql`
         user: User
     }
 
-    input UserInput {
-        _id: ID
-        username: String
-        email: String
-        password: String
-        firstName: String
-        lastName: String
-        aboutMe: String
-        profilePicture: String
-        friends: [UserInput]!
-        projects: [ProjectInput]!
-        comments: [CommentInput]!
-    }
-
-    input ProjectInput {
-        _id: ID
-        projectName: String
-        projectDescription: String
-        owner: UserInput!
-        members :[UserInput]!
-        tasks: [TaskInput]!
-        comments: [CommentInput]!
-        dueDate: String
-        createdAt: String
-        updatedAt: String
-    }
-
-    input TaskInput {
-        _id: ID
-        taskName: String
-        project: [ProjectInput]!
-        isOpen: Boolean
-        isInProgress: Boolean
-        isComplete: Boolean
-        createdAt: String
-        updatedAt: String
-    }
-
-    input CommentInput {
-        _id: ID
-        username: String
-        commentText: String
-        userRecipient: [UserInput]!
-        projectRecipient: [ProjectInput]!
-        createdAt: String
-        updatedAt: String
-    }
-
-
     type Query {
         GetUserById(userId: ID!): User
         GetUserCommentsByUsername(username: String!): [Comment]
         GetProjectCommentsByUsername(username: String!): [Comment]
         GetUserCoworkers(username: String!): [User]
-        GetUserProjects(username: String!): [Project]
+        GetUserProjects(username: String!): User
         GetProjects: [Project]
         GetProjectById(projectId: ID!): Project
-        GetProjectMembers(projectName: String!): [User]
-        GetProjectTasks(projectName: String!): [Task]
+        GetProjectMembers(projectName: String!): Project
+        GetProjectTasks(projectName: String!): Project
         GetFriendComments(username: String!): [Comment]
         GetProjectComments(projectName: String!): Project
         me: User
@@ -124,11 +76,11 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         createProjectComment(commentText: String!, projectName: String!): Comment
         createUserComment(commentText: String!): Comment
-        createProject(projectName: String!, projectDescription: String!, ownerName: String!): Project
+        createProject(projectName: String!, projectDescription: String!): Project
         createTask(taskName: String!, projectName: String!): Task
-        addProjectMember(projectName: String!, member: UserInput!): Project
+        addProjectMember(projectName: String!, memberName: String!): Project
         updateUserAboutMe(aboutText: String!): User
       }
 `;
-
+// change addprojectmember
 module.exports = typeDefs;

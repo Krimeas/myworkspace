@@ -15,13 +15,12 @@ const projectSchema = new Schema({
     },
     owner:
         {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
+            type: String,
+            required: true
         },
     members: [
         {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
+            type: String
         }
     ],
     tasks: [
@@ -36,7 +35,7 @@ const projectSchema = new Schema({
             ref: 'Comment'
         }
     ],
-    dueDate: {
+    dueDate: { //not used for now
         type: Date,
         get: (timestamp) => dateFormat(timestamp)
     }

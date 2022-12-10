@@ -18,21 +18,16 @@ const commentSchema = new Schema(
         },
 
         userRecipient:
-            [
+            
                 {
-                    type: Schema.Types.ObjectId,
-                    ref: 'User'
-
-                }
-            ],
+                    type: String,
+                },
 
         projectRecipient:
-            [
+            
                 {
-                    type: Schema.Types.ObjectId,
-                    ref: 'Project'
+                    type: String,
                 }
-            ]
 
     },
     {

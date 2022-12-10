@@ -36,9 +36,11 @@ return (
 export default Coworkers
 
 
+const styles ={
+
 /* css for cards */
 
-.card {
+Card: {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -46,13 +48,32 @@ export default Coworkers
 
 /* Shadowds when hovering over */
 
-.card:hover{
+Card: hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 /* padding inside the card container */
 
-.container {
+<div class="container">
+  <div class="notification">
+    This container is <strong>centered</strong> on desktop.
+  </div>
+</div> {
   padding: 2px 16px;
 }
 
+}
+
+function Card() {
+  return (
+    <div style={styles.card}>
+      
+      <div style={styles.heading}>My Workspace </div>
+      <div style={styles.content}>
+
+      </div>
+    </div>
+  );
+}
+
+export default Card;

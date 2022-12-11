@@ -29,7 +29,7 @@ const Header = () => {
             </Link>
             </li>
             <li class="nav-item" >
-            <Link to="/user">
+            <Link to="/users/:username">
               User
             </Link>
             </li>

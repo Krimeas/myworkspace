@@ -1,6 +1,0 @@
-{
-    "files.autoSave": "onFocusChange",
-    "editor.dropIntoEditor.enabled": false,
-    "editor.foldingImportsByDefault": true,
-    "explorer.compactFolders": false
-}

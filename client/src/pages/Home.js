@@ -102,9 +102,9 @@ const Home = (props) => {
               Sign in
             </button>
           </form>
-          <p>
+          <button type="submit" class="btn  btn-block mb-4">
             <Link to="/signup">Signup</Link>
-          </p>
+          </button>
         </div>
         <div
           class="tab-pane fade"

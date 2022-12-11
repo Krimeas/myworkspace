@@ -13,9 +13,9 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import User from "./pages/User";
 import Projects from './pages/Projects';
-// import Coworkers from './pages/Coworkers';
-// import IndividualProject from './pages/IndividualProject';
-// import IndividualTask from './pages/IndividualTask';
+import Coworkers from './pages/Coworkers';
+import IndividualProject from './pages/IndividualProject';
+import IndividualTask from './pages/IndividualTask';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -55,7 +55,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/user" element={<User />} />
               <Route path="/projects" element={<Projects />} />
-              {/* <Route 
+              <Route 
                 path="/users/:username" 
                 element={<User />}
               />
@@ -63,7 +63,6 @@ function App() {
                 path="/users/:username/:coworkers" 
                 element={<Coworkers />}
               />
-
               <Route 
                 path="/projects/:projectId" 
                 element={<IndividualProject />}
@@ -75,7 +74,7 @@ function App() {
               <Route 
                 path="/projects/:projectId/:taskID" 
                 element={<IndividualTask />}
-              /> */}
+              />
             </Routes>
           </div>
           <Footer />

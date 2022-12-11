@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import { useQuery } from '@apollo/client';
 // import { useMutation } from '@apollo/client';
+
 // import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from "../utils/auth";
@@ -101,9 +102,9 @@ const Home = (props) => {
               Sign in
             </button>
           </form>
-          <p>
+          <button type="submit" class="btn  btn-block mb-4">
             <Link to="/signup">Signup</Link>
-          </p>
+          </button>
         </div>
         <div
           class="tab-pane fade"

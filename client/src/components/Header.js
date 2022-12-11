@@ -14,34 +14,42 @@ const Header = () => {
       {/* // <!-- Navbar --> */}
       <nav class="navbar navbar-expand-lg bg-light flex-row justify-content-center">
         <div class="container-fluid flex-column align-content-center">
-          <a class="navbar-brand" href="/"><h1>MyWorkSpace</h1></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="/">
+            <h1>MyWorkSpace</h1>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="container text-center">
-
-
             <div class="nav-item">
-
-              <a class="nav-link active" aria-current="page" href="/coworkers">CoWorkers</a>
-
+              <a class="nav-link active" aria-current="page" href="/users/:username/:coworkers">
+                CoWorkers
+              </a>
             </div>
             <div class="row align-items-center">
               <div class="nav-item">
-                <a class="nav-link" href="/projects">Projects</a>
-
+                <a class="nav-link" href="/projects">
+                  Projects
+                </a>
               </div>
             </div>
             <div class="row align-items-end">
               <div class="nav-item">
-                <a class="nav-link" href="/user">User</a>
-
+                <a class="nav-link" href="/users/:username">
+                  User
+                </a>
               </div>
             </div>
-
           </div>
         </div>
-
       </nav>
       {/* // <!-- Navbar --> */}
     </header>

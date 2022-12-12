@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useQuery } from '@apollo/client';
-// import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 
-// import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
 const Home = (props) => {
   const [formState, SetFormState] = useState({ email: "", password: "" });
-  // const [Login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     SetFormState({
-      formState,
+      ...formState,
       [name]: value,
     });
   };
@@ -24,8 +23,8 @@ const Home = (props) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await Home({
-        variables: { formState },
+      const { data } = await login({
+        variables: { ...formState },
       });
 
       Auth.login(data.login.token);
@@ -41,78 +40,54 @@ const Home = (props) => {
 
   return (
     <main>
-      <div class="tab-content">
+      <div className="tab-content">
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="pills-login"
           role="tabpanel"
           aria-labelledby="tab-login"
         >
           <form onSubmit={handleFormSubmit}>
-            <div class="form-outline mb-4">
-              <input
-                onChange={handleChange}
-                value={formState.password}
-                type="email"
-                id="loginName"
-                class="form-control"
-              />
-              <label class="form-label" for="loginName">
+            <div className="form-outline mb-4">
+              <label className="form-label">
                 Email
               </label>
-            </div>
-
-            <div class="form-outline mb-4">
               <input
+                className="form-control"
+                placeholder="Your email"
+                type="email"
+                name="email"
+                value={formState.email}
                 onChange={handleChange}
-                value={formState.password}
-                type="password"
-                id="loginPassword"
-                class="form-control"
               />
-              <label class="form-label" for="loginPassword">
-                Password
-              </label>
             </div>
-
-            <div class="row mb-4">
-              <div class="col-md-6 d-flex justify-content-center">
-                <div class="form-check mb-3 mb-md-0">
-                  <input
-                    onChange={handleChange}
-                    value={formState.password}
-                    class="form-check-input"
-                    type="checkbox"
-                    id="loginCheck"
-                    checked
-                  />
-                  <label class="form-check-label" for="loginCheck">
-                    {" "}
-                    Remember me{" "}
-                  </label>
-                </div>
-              </div>
-
-              <div class="col-md-6 d-flex justify-content-center">
-                <a href="#!">Forgot password?</a>
-              </div>
+            <label className="form-label">
+              Password
+            </label>
+            <div className="form-outline mb-4">
+              <input
+                className="form-control"
+                placeholder="******"
+                type="password"
+                name="password"
+                value={formState.password}
+                onChange={handleChange}
+              />
             </div>
-
-            <button type="submit" class="btn btn-primary btn-block mb-4">
+            <button type="submit" className="btn btn-primary btn-block mb-4">
               Sign in
             </button>
           </form>
-          <button type="submit" class="btn  btn-block mb-4">
+          <button type="submit" className="btn  btn-block mb-4">
             <Link to="/signup">Signup</Link>
           </button>
         </div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="pills-register"
           role="tabpanel"
           aria-labelledby="tab-register"
-        >
-        </div>
+        ></div>
       </div>
     </main>
   );

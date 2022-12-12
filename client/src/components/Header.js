@@ -10,24 +10,45 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className="bg-primary text-light mb-4 py-3 flex-row align center">
       {/* // <!-- Navbar --> */}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div>
-          <Link to="/">MyWorkSpace</Link>
-        </div>
-        <div>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link class="nav-item" to="/coworkers">
-              Coworkers
-            </Link>
-            <Link class="nav-item" to="projects">
-              Projets
-            </Link>
-            <Link class="nav-item" to="/user">
-              User
-            </Link>
-          </ul>
+      <nav className="navbar navbar-expand-lg bg-light flex-row justify-content-center">
+        <div className="container-fluid flex-column align-content-center">
+          <a className="navbar-brand" href="/">
+            <h1>MyWorkSpace</h1>
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="container text-center">
+            <div className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/users/:username/:coworkers">
+                CoWorkers
+              </a>
+            </div>
+            <div className="row align-items-center">
+              <div className="nav-item">
+                <a className="nav-link" href="/projects">
+                  Projects
+                </a>
+              </div>
+            </div>
+            <div className="row align-items-end">
+              <div className="nav-item">
+                <a className="nav-link" href="/users/:username">
+                  User
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
       {/* // <!-- Navbar --> */}

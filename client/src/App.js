@@ -12,10 +12,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import User from "./pages/User";
-import Projects from './pages/Projects';
-// import Coworkers from './pages/Coworkers';
-// import IndividualProject from './pages/IndividualProject';
-// import IndividualTask from './pages/IndividualTask';
+import Projects from "./pages/Projects";
+import Coworkers from "./pages/Coworkers";
+import IndividualProject from "./pages/IndividualProject";
+import IndividualTask from "./pages/IndividualTask";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -49,33 +50,44 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
-          <div className="container">
+          <div className="container col-12">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/user" element={<User />} />
-              <Route path="/projects" element={<Projects />} />
-              {/* <Route 
-                path="/users/:username" 
-                element={<User />}
+              <Route 
+              path="/" 
+              element={<Home />} 
               />
               <Route 
-                path="/users/:username/:coworkers" 
-                element={<Coworkers />}
+              path="/signup" 
+              element={<Signup />} 
               />
-
               <Route 
-                path="/projects/:projectId" 
+              path="/user" 
+              element={<User />} 
+              />
+              <Route 
+              path="/projects" 
+              element={<Projects />} 
+              />
+              <Route 
+              path="/users/:username" 
+              element={<User />} 
+              />
+              <Route 
+              path="/users/:username/:coworkers" 
+              element={<Coworkers />}
+              />
+              <Route 
+              path="/projects/:projectId"
                 element={<IndividualProject />}
               />
-              <Route 
-                path="/projects/:projectId" 
+              <Route
+                path="/projects/:projectId"
                 element={<IndividualProject />}
               />
-              <Route 
-                path="/projects/:projectId/:taskID" 
+              <Route
+                path="/projects/:projectId/:taskID"
                 element={<IndividualTask />}
-              /> */}
+              />
             </Routes>
           </div>
           <Footer />

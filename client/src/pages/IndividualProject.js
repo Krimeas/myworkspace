@@ -18,15 +18,23 @@ const SingleProject = () => {
   // const comments = data?.comments || [];
   const projects = data?.GetProjects || [];
   const projectTask = data?.GetProjectTasks || [];
+  var {projectId} = useParams();
+  const { loading, data } = useQuery(QUERY_PROJECT, {variables: { projectId }});
+  const project = data?.GetProjectById || {};
+  console.log(project);
 
   return (
-    <Container fluid>
-      <main>
-        {/* My Messages/comments should hug the left side of the page, likely col-3 */}
-        <div className="text-center row col-xl-12">
-          <div className="col-xl-2 justify-content-left bg-primary ">
-            {/* <ProjectMessageForm /> */}
-            {/* <div className="col-12 col-md-8 mb-3">
+    <main>
+      {/* My Messages/comments should hug the left side of the page, likely col-3 */}
+      <h1>THIS IS THE INDIVIDUAL PROJECTS PAGE</h1>
+      <div className="flex-row justify-center">
+        <div
+          className="col-12 col-md-10 mb-3 p-3"
+          style={{ border: '1px dotted #1a1a1a' }}
+        >
+          {/* <ProjectMessageForm /> */}
+        </div>
+        {/* <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : ( null
@@ -58,15 +66,20 @@ const SingleProject = () => {
             </div>
           </div>
 
-          {/* my projects should hug the right side of the page. likely col-3 */}
-          <div className="col-xl-2 justify-content-left bg-primary ">
-            {/* <MyProjects 
+
+      {/* my projects should hug the right side of the page. likely col-3 */}
+      <div className="flex-row justify-center">
+        <div
+          className="col-12 col-md-10 mb-3 p-3"
+          style={{ border: '1px dotted #1a1a1a' }}
+        >
+          {/* <MyProjects 
           projects={projects}
           /> */}
-          </div>
+          
         </div>
-      </main>
-    </Container>
+      </div>
+    </main>
   );
 };
 

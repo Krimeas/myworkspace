@@ -80,10 +80,10 @@ function App() {
               path="/projects/:projectId"
                 element={<IndividualProject />}
               />
-              <Route
+              {/* <Route
                 path="/coworkers/:coworkerId"
                 element={<IndividualCoworker/>}
-              />
+              /> */}
               <Route
                 path="/projects/:projectId/:taskID"
                 element={<IndividualTask />}

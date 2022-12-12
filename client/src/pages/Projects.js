@@ -40,7 +40,7 @@ const Projects = () => {
             {loading ? (
                 <div>Loading...</div>
               ) : (
-                <AddProject projects={projects} />
+                <AddProject/>
               )}
             </div>
             <div style={{ border: "1px dotted #1a1a1a" }}>

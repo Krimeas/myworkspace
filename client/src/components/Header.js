@@ -10,24 +10,45 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className="bg-primary text-light mb-4 py-3 flex-row align center">
       {/* // <!-- Navbar --> */}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div>
-          <Link to="/">MyWorkSpace</Link>
-        </div>
-        <div>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link class="nav-item" to="/coworkers">
-              Coworkers
-            </Link>
-            <Link class="nav-item" to="projects">
-              Projets
-            </Link>
-            <Link class="nav-item" to="/user">
-              User
-            </Link>
-          </ul>
+      <nav class="navbar navbar-expand-lg bg-light flex-row justify-content-center">
+        <div class="container-fluid flex-column align-content-center">
+          <a class="navbar-brand" href="/">
+            <h1>MyWorkSpace</h1>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="container text-center">
+            <div class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/users/:username/:coworkers">
+                CoWorkers
+              </a>
+            </div>
+            <div class="row align-items-center">
+              <div class="nav-item">
+                <a class="nav-link" href="/projects">
+                  Projects
+                </a>
+              </div>
+            </div>
+            <div class="row align-items-end">
+              <div class="nav-item">
+                <a class="nav-link" href="/users/:username">
+                  User
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
       {/* // <!-- Navbar --> */}

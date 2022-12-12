@@ -5,10 +5,9 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="mt-auto bg-primary text-align-center">
-        <h4>
-          Made with React by 'Github11', 'Github12', 'Github13', 'Github14'
-        </h4>
+    <footer className="text-align-center">
+        <h4><center> Made with React by</center></h4>
+        <h4><center>'Github11', 'Github12', 'Github13', 'Github14'</center></h4>
     </footer>
   );
 };

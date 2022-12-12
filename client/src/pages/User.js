@@ -1,10 +1,16 @@
 import React from 'react';
+// import { useParams } from 'react-router-dom';
 // import { useQuery } from '@apollo/client';
+// import { useMutation } from '@apollo/client';
 
 // import MyMessageForm from '../components/MyMessageForm';
 // import MyMessageList from '../components/MyMessageList';
+// import MyProjectList from '../components/MyProjects';
+// import UserComp from '../components/UserComp';
 
 // import { QUERY_USERCOMMENTS, QUERY_PROJECTS} from '../utils/queries';
+// import { ADD_USERCOMMENT } from '../utils/mutations';
+
 
 const User = () => {
   // const { loading, data } = useQuery(QUERY_USERCOMMENTS, QUERY_PROJECTS);
@@ -33,7 +39,15 @@ const User = () => {
           )}
         </div> */}
       </div>
-      {/* Eventually, User Data goes in another div here. */}
+
+
+      <div>
+{/*  */}
+        {/* Eventually, the User Compoents go in another div here.  Whatever we decide those are.  About me and such? */}
+{/*  */}
+      </div>
+
+
       {/* my projects should hug the right side of the page. likely col-3 */}
       <div className="flex-row justify-center">
         <div

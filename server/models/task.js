@@ -16,12 +16,11 @@ const taskSchema = new Schema(
         maxlength: 200
     },
 
-    project: [
+    project:
         {
-            type: Schema.Types.ObjectId,
-            ref: 'Project'
-        }
-    ],
+            type: String,
+            required: true,
+        },
 
     // open, in progess, completed
 

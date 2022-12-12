@@ -48,11 +48,13 @@ const resolvers = {
         GetUserProjects: async (parent, { username }) => {
             return User.findOne({ username }).populate('projects');
         },
-        GetProjects: async () => {
-            return Project.find();
+        GetProjects: async (parent, args, context) => {
+            if(context.user) return Project.find();
+            throw new AuthenticationError('Incorrect credentials');
         },
-        GetProjectById: async (parent, { projectId }) => {
-            return Project.findOne({ _id: projectId }).populate('comments').populate('members').populate('tasks');
+        GetProjectById: async (parent, { projectId }, context) => {
+            if(context.user) return Project.findOne({ _id: projectId }).populate('comments').populate('members').populate('tasks');
+            throw new AuthenticationError('Incorrect credentials');
         },
         //consolidated all getproject things into GetProjectById
         // GetProjectMembers: async (parent, { projectId }) => {

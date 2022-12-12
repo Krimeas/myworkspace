@@ -12,7 +12,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
-//   const [addUser, { error, data }] = useMutation(ADD_USER);
+  //   const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,50 +39,88 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
+    <main className="flex-row justify-center mb-4 row">
+      <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+          <div class="col-lg-4 col-lg-offset-4">
+            <div class="container">
+              <h4 class="card-header bg-dark text-light p-2">Sign Up</h4>
+            </div>
+
             {/* {data ? 
             (
               <p>
                 <Link to="/">Go Home {' '}.</Link>
               </p>
             ) : ( */}
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
+
+            <form onSubmit={handleFormSubmit}>
+              <div class="container d-flex justify-content-center">
+                <div class="col-lg-4 col-lg-offset-4">
+                  <div class="d-flex justify-content-center lign-items-center">
+                    <div class="vstack gap-3">
+
+                      <div class="mb-3 mt-3">
+                        <div class="col-md-3 mb-5">
+                          <input
+                            className="form-input"
+                            placeholder="Your username"
+                            name="username"
+                            type="text"
+                            value={formState.name}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+
+                      <div class="mb-3 mt-3">
+                        <div class="col-md-3 mb-5">
+                          <input
+                            className="form-input"
+                            placeholder="Your email"
+                            name="email"
+                            type="email"
+                            value={formState.email}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+
+                      <div class="mb-3 mt-3">
+                        <div class="col-md-3 mb-5">
+                          <input
+                            className="form-input"
+                            placeholder="******"
+                            name="password"
+                            type="password"
+                            value={formState.password}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+
+
+
+
+            <button
+              className="btn btn-block btn-primary"
+              style={{ cursor: 'pointer' }}
+              type="submit"
+            >
+              Submit
+            </button>
+
+
+
+
+
             {/* )} */}
 
             {/* {error && (
@@ -93,7 +131,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </main>
+    </main >
   );
 };
 

@@ -28,4 +28,4 @@ const MyProjectList = ({
   );
 };
 
-export default myProjectList;
+export default MyProjectList;

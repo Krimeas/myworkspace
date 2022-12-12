@@ -46,10 +46,19 @@ const Projects = () => {
 {/*  */}
       </div>
 
-      <div>
-{/*  */}
-        {/* Eventually, the All Projects Component goes in another div here.  Bottom, Center of Page */}
-{/*  */}
+      <div className="flex-row justify-center">
+        <div
+          className="col-12 col-md-10 mb-3 p-3"
+          style={{ border: "1px dotted #1a1a1a" }}
+        >
+        {loading ? (
+            <div>Loading...</div>
+          ) : (
+          <AllProjects 
+          projects={projects}
+          />
+          )}
+        </div>
       </div>
 
       {/* my projects should hug the right side of the page. likely col-3 */}
@@ -58,9 +67,13 @@ const Projects = () => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: "1px dotted #1a1a1a" }}
         >
-          {/* <MyProjects 
+        {loading ? (
+            <div>Loading...</div>
+          ) : (
+          <MyProjects 
           projects={projects}
-          /> */}
+          />
+          )}
         </div>
       </div>
     </main>

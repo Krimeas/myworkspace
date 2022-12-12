@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../utils/mutations";
 
@@ -28,7 +29,7 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      const { data } = await addUser({
+      const { data } = await createUser({
         variables: { ...formState },
       });
 
@@ -46,6 +47,12 @@ const Signup = () => {
             <div className="container col-lg-12">
               <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
             </div>
+            {data ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
             <form onSubmit={handleFormSubmit}>
               <div className="container d-flex justify-content-center">
                 <div className="col-lg-12 col-lg-offset-4">
@@ -55,9 +62,9 @@ const Signup = () => {
                         <input
                           className="form-control"
                           placeholder="Create a username"
-                          name="user"
+                          name="username"
                           type="text"
-                          value={formState.user}
+                          value={formState.username}
                           onChange={handleChange}
                         />
                       </div>
@@ -109,14 +116,15 @@ const Signup = () => {
                   </div>
                 </div>
               </div>
-            </form>
-            <button
+              <button
               className="btn btn-block btn-primary"
               style={{ cursor: "pointer" }}
               type="submit"
             >
               Submit
             </button>
+            </form>
+            )}
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

@@ -1,6 +1,6 @@
 import IndividualCoworkers from '../components/IndividualCoworkers';
 
-ort React from 'react';
+import React from 'react';
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';

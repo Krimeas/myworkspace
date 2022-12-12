@@ -1,27 +1,27 @@
 import { gql } from '@apollo/client';
 
 
-export const QUERY_ME = gql`
-query Me {
-  me {
-    username
-    email
-    firstName
-    lastName
-    aboutMe
-  }
-}`;
+// export const QUERY_ME = gql`
+// query Me {
+//   me {
+//     username
+//     email
+//     firstName
+//     lastName
+//     aboutMe
+//   }
+// }`;
 
-export const QUERY_USER = gql`
-query GetUserByUsername($username: String!) {
-  GetUserByUsername(username: $username) {
-    _id
-    email
-    firstName
-    lastName
-    username
-  }
-`;
+// export const QUERY_USER = gql`
+// query GetUserByUsername($username: String!) {
+//   GetUserByUsername(username: $username) {
+//     _id
+//     email
+//     firstName
+//     lastName
+//     username
+//   }
+// `;
 
 // export const QUERY_USERCOMMENTS = gql`
 //   query getUserCommentsByUsername {
@@ -46,37 +46,37 @@ query GetProjects {
 }
 `;
 
-export const QUERY_PROJECTCOMMENTS = gql`
-query GetProjectComments($projectName: String!) {
-  GetProjectComments(projectName: $projectName) {
-    _id
-    comments {
-      commentText
-      username
-      createdAt
-      updatedAt
-    }
-    projectName
-    projectDescription
-    owner
-  }
-}
-`;
+// export const QUERY_PROJECTCOMMENTS = gql`
+// query GetProjectComments($projectName: String!) {
+//   GetProjectComments(projectName: $projectName) {
+//     _id
+//     comments {
+//       commentText
+//       username
+//       createdAt
+//       updatedAt
+//     }
+//     projectName
+//     projectDescription
+//     owner
+//   }
+// }
+// `;
 
-export const QUERY_PROJECTTASKS = gql`
-query GetProjectTasks($projectName: String!) {
-  GetProjectTasks(projectName: $projectName) {
-    projectName
-    projectDescription
-    tasks {
-      username
-      taskName
-      isComplete
-      isOpen
-      isInProgress
-      createdAt
-      updatedAt
-    }
-  }
-}
-`;
+// export const QUERY_PROJECTTASKS = gql`
+// query GetProjectTasks($projectName: String!) {
+//   GetProjectTasks(projectName: $projectName) {
+//     projectName
+//     projectDescription
+//     tasks {
+//       username
+//       taskName
+//       isComplete
+//       isOpen
+//       isInProgress
+//       createdAt
+//       updatedAt
+//     }
+//   }
+// }
+// `;

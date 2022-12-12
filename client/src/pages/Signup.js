@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { CREATE_USER } from "../utils/mutations";
 
-import { CREATE_USER } from '../utils/mutations';
-
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
+    user: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
   });
-  const [createUser, { error, data }] = useMutation(CREATE_USER);
+  const [addUser, { error, data }] = useMutation(CREATE_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,7 +28,7 @@ const Signup = () => {
     console.log(formState);
 
     try {
-      const { data } = await createUser({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
@@ -39,57 +39,89 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
-            {/* {data ? 
-            (
-              <p>
-                <Link to="/">Go Home {' '}.</Link>
-              </p>
-            ) : ( */}
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            {/* )} */}
+    <main className="flex-row justify-center mb-4 row">
+      <div className="container h-100">
+        <div className="row h-100 justify-content-center align-items-center">
+          <div className="col-lg-12 col-lg-offset-4">
+            <div className="container col-lg-12">
+              <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+            </div>
+            <form onSubmit={handleFormSubmit}>
+              <div className="container d-flex justify-content-center">
+                <div className="col-lg-12 col-lg-offset-4">
+                  <div className="d-flex justify-content-center lign-items-center">
+                    <div className="vstack gap-3 col-lg-10">
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Create a username"
+                          name="user"
+                          type="text"
+                          value={formState.user}
+                          onChange={handleChange}
+                        />
+                      </div>
 
-            {/* {error && (
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Your First Name"
+                          name="firstName"
+                          type="text"
+                          value={formState.firstName}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Your Last Name"
+                          name="lastName"
+                          type="text"
+                          value={formState.lastName}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Your email"
+                          name="email"
+                          type="email"
+                          value={formState.email}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Create a password"
+                          name="password"
+                          type="password"
+                          value={formState.password}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <button
+              className="btn btn-block btn-primary"
+              style={{ cursor: "pointer" }}
+              type="submit"
+            >
+              Submit
+            </button>
+            {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

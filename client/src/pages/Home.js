@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from '@apollo/client';
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 
-import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
 const Home = (props) => {
   const [formState, SetFormState] = useState({ email: "", password: "" });
-  const [Login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,7 +23,7 @@ const Home = (props) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await Login({
+      const { data } = await login({
         variables: { ...formState },
       });
 
@@ -50,7 +49,7 @@ const Home = (props) => {
         >
           <form onSubmit={handleFormSubmit}>
             <div className="form-outline mb-4">
-            <label className="form-label" for="loginName">
+              <label className="form-label">
                 Email
               </label>
               <input
@@ -62,13 +61,13 @@ const Home = (props) => {
                 onChange={handleChange}
               />
             </div>
-            <label className="form-label" for="loginPassword">
-                Password
-              </label>
+            <label className="form-label">
+              Password
+            </label>
             <div className="form-outline mb-4">
               <input
                 className="form-control"
-                placeholder="**"
+                placeholder="******"
                 type="password"
                 name="password"
                 value={formState.password}
@@ -88,8 +87,7 @@ const Home = (props) => {
           id="pills-register"
           role="tabpanel"
           aria-labelledby="tab-register"
-        >
-        </div>
+        ></div>
       </div>
     </main>
   );

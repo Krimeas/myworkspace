@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
 mutation Login($email: String!, $password: String!) {
+mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     token
     user {
@@ -100,7 +101,25 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 //     }
 //   }
 // `;
+// export const UPDATE_PROJECTTASK = gql`
+//   mutation updateProjectTask($taskText: String!) {
+//     updateProjectTask(taskText: $taskText) {
+//       _id
+//       taskText
+//       createdAt
+//     }
+//   }
+// `;
 
+// export const DELETE_PROJECTTASK = gql`
+//   mutation deleteProjectTask($taskText: String!) {
+//     deleteProjectTask(taskText: $taskText) {
+//       _id
+//       taskText
+//       createdAt
+//     }
+//   }
+// `;
 // export const DELETE_PROJECTTASK = gql`
 //   mutation deleteProjectTask($taskText: String!) {
 //     deleteProjectTask(taskText: $taskText) {
@@ -115,7 +134,14 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 //   mutation addProjectMemeber($) {
 //     addProjectMember() {
 //       _id
+// export const ADD_PROJECTMEMBER = gql`
+//   mutation addProjectMemeber($) {
+//     addProjectMember() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;
@@ -124,7 +150,14 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 //   mutation updateUserProjects($) {
 //     updateUserProjects() {
 //       _id
+// export const UPDATE_USERPROJECTS = gql`
+//   mutation updateUserProjects($) {
+//     updateUserProjects() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;
@@ -133,7 +166,14 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 //   mutation updateUserCoworkers($) {
 //     updateUserCoworkers() {
 //       _id
+// export const UPDATE_USERCOWORKERS = gql`
+//   mutation updateUserCoworkers($) {
+//     updateUserCoworkers() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;
@@ -142,7 +182,14 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 //   mutation updateUserAboutMe($) {
 //     updateUserAboutMe() {
 //       _id
+// export const UPDATE_USERABOUTME = gql`
+//   mutation updateUserAboutMe($) {
+//     updateUserAboutMe() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;

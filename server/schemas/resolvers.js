@@ -31,8 +31,8 @@ Mutations: Should we just put CRUD stuff in there? Why is login there too? Do pa
 const resolvers = {
     Query: {
         //what do parents, context, args params do??????????
-        GetUserById: async (parent, { userId }) => {
-            return User.findOne({ _id: userId });
+        GetUserByUsername: async (parent, { username }) => {
+            return User.findOne({ username });
         },
         GetUserCommentsByUsername: async (parent, { username }) => {
             const params = username ? { username: username, userRecipient: { $ne: null } } : {};

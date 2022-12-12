@@ -12,13 +12,13 @@ const Header = () => {
   return (
     <header className="bg-primary text-light mb-4 py-3 flex-row align center">
       {/* // <!-- Navbar --> */}
-      <nav class="navbar navbar-expand-lg bg-light flex-row justify-content-center">
-        <div class="container-fluid flex-column align-content-center">
-          <a class="navbar-brand" href="/">
+      <nav className="navbar navbar-expand-lg bg-light flex-row justify-content-center">
+        <div className="container-fluid flex-column align-content-center">
+          <a className="navbar-brand" href="/">
             <h1>MyWorkSpace</h1>
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -26,24 +26,24 @@ const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="container text-center">
-            <div class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/users/:username/:coworkers">
+          <div className="container text-center">
+            <div className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/users/:username/:coworkers">
                 CoWorkers
               </a>
             </div>
-            <div class="row align-items-center">
-              <div class="nav-item">
-                <a class="nav-link" href="/projects">
+            <div className="row align-items-center">
+              <div className="nav-item">
+                <a className="nav-link" href="/projects">
                   Projects
                 </a>
               </div>
             </div>
-            <div class="row align-items-end">
-              <div class="nav-item">
-                <a class="nav-link" href="/users/:username">
+            <div className="row align-items-end">
+              <div className="nav-item">
+                <a className="nav-link" href="/users/:username">
                   User
                 </a>
               </div>

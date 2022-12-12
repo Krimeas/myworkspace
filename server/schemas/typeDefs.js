@@ -64,10 +64,7 @@ const typeDefs = gql`
         GetUserProjects(username: String!): User
         GetProjects: [Project]
         GetProjectById(projectId: ID!): Project
-        GetProjectMembers(projectName: String!): Project
-        GetProjectTasks(projectName: String!): Project
         GetFriendComments(username: String!): [Comment]
-        GetProjectComments(projectName: String!): Project
         me: User
       }
 

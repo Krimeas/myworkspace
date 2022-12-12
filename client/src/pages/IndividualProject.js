@@ -1,7 +1,7 @@
 import React from 'react';
-// import { useParams } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
-// import { useMutation } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
 // import ProjectMessageForm from '../components/ProjectMessageForm';
 // import ProjectMessageList from '../components/ProjectMessageList';
@@ -9,13 +9,14 @@ import React from 'react';
 // import ProjectMembers from '../components/ProjectMembers';
 // import ProjectTask from '../components/ProjectTask';
 
-// import { QUERY_PROJECTCOMMENTS, QUERY_PROJECTS, QUERY_TASKS, QUERY_PROJECTMEMBERS} from '../utils/queries';
+import { QUERY_PROJECT } from '../utils/queries';
 // import { ADD_PROJECTCOMMENT} from '../utils/mutations';
 
 const SingleProject = () => {
-  // const { loading, data } = useQuery(QUERY_PROJECTCOMMENTS, QUERY_PROJECTS);
-  // const comments = data?.comments || [];
-  // const projects = data?.projects || [];
+  var {projectId} = useParams();
+  const { loading, data } = useQuery(QUERY_PROJECT, {variables: { projectId }});
+  const project = data?.GetProjectById || {};
+  console.log(project);
 
   return (
     <main>

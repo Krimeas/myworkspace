@@ -52,14 +52,18 @@ const resolvers = {
             return Project.find();
         },
         GetProjectById: async (parent, { projectId }) => {
-            return Project.findOne({ _id: projectId });
+            return Project.findOne({ _id: projectId }).populate('comments').populate('members').populate('tasks');
         },
-        GetProjectMembers: async (parent, { projectName }) => {
-            return Project.findOne({ projectName }).populate('members');
-        },
-        GetProjectTasks: async (parent, { projectName }) => {
-            return Project.findOne({ projectName }).populate('tasks');
-        },
+        //consolidated all getproject things into GetProjectById
+        // GetProjectMembers: async (parent, { projectId }) => {
+        //     return Project.findOne({ _id: projectId }).populate('members');
+        // },
+        // GetProjectTasks: async (parent, { projectId }) => {
+        //     return Project.findOne({ _id: projectId }).populate('tasks');
+        // },
+        // GetProjectComments: async (parent, { projectId }) => {
+        //     return Project.findOne({ _id: projectId}).populate('comments');
+        // },
         me: async (parent, args, context) => {
             if(context.user) {
                 return User.findOne({_id: context.user._id});
@@ -74,9 +78,6 @@ const resolvers = {
             }
             return comments;
         },
-        GetProjectComments: async (parent, {projectName}) => {
-            return Project.findOne({ projectName }).populate('comments');
-        }
     },
 
     Mutation: {

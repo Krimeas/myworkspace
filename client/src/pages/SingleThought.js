@@ -1,26 +1,24 @@
-import IndividualCoworkers from '../components/IndividualCoworkers';
-
 import React from 'react';
 
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
-import { useQuery } from ' ';
+import { useQuery } from '@apollo/client';
 
-import MyProjects from '../components/MyMessageList';
-import CommentForm from '../components/MyProjects';
+import CommentList from '../components/CommentList';
+import CommentForm from '../components/CommentForm';
 
-import { QUERY_PROJECTS } from '../utils/queries';
+import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
 
-const IndividualCoworkers = () => {
+const SingleThought = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { IndividualCoworkers } = useParams();
+  const { thoughtId } = useParams();
 
-  const { loading, data } = useQuery(IndividualCoworkers, {
+  const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
     // pass URL parameter
-    variables: { IndividualCoworkers: IndividualCoworkers },
+    variables: { thoughtId: thoughtId },
   });
 
-  const IndividualCoworkers = data?.IndividualCoworkers || {};
+  const thought = data?.thought || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -28,9 +26,9 @@ const IndividualCoworkers = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {IndividualCoworkers.Coworkername} <br />
+        {thought.thoughtAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
-          coworker name {IndividualCoworkers.createdAt}
+          had this thought on {thought.createdAt}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -48,7 +46,7 @@ const IndividualCoworkers = () => {
       </div>
 
       <div className="my-5">
-        <CommentList comments={IndividualCoworkers.Coworkername} />
+        <CommentList comments={thought.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
         <CommentForm thoughtId={thought._id} />
@@ -57,4 +55,4 @@ const IndividualCoworkers = () => {
   );
 };
 
-export default IndividualCoworkers;
+export default SingleThought;

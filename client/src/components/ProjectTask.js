@@ -1,31 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AllProjectTasks = ({
-  ProjectTasks,
-  showProjectName = true,
-}) => {
-  if (!ProjectTasks.length) {
-    return <h3>You are not in any projects</h3>;
+const IndividualProject = ({tasks}) => {
+  console.log(tasks._id);
+  if (!tasks.length) {
+    return <h3>This task is empty</h3>;
   }
 
   return (
     <div>
-      {ProjectTasks &&
-        ProjectTasks.map((ProjectTask) => (
-          <div key={ProjectTask._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-            </h4>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/${ProjectTask._id}`}
-            >
-              WORDS GO HERE WHERE DO THEY SHOW UP?
-            </Link>
+      {tasks &&
+        tasks.map((task) => (
+          <div key={task._id} className="card mb-3">
+            <div>
+              <h4 className="card-header bg-primary text-light p-2 m-0">{task.Name}
+              </h4>
+            </div>
+            {/* <div key={task.Members} className="card mb-3">
+              <h4 className="card-header bg-primary text-light p-2 m-0">{task.Members}
+              </h4>
+            </div>          */}
           </div>
         ))}
     </div>
   );
 };
-
-export default AllProjectTasks;

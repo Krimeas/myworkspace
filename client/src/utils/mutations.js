@@ -5,8 +5,9 @@ mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     token
     user {
-      username
       _id
+      username
+      email
     }
   }
 }
@@ -24,41 +25,9 @@ mutation CreateUser($username: String!, $email: String!, $password: String!, $fi
 }
 `;
 
-export const CREATE_USERCOMMENT = gql`
-  mutation createUserComment($messageText: String!) {
-    createUserComment(messageText: $messageText) {
-      _id
-      messageText
-      messageAuthor
-      createdAt
-    }
-  }
-`;
-
-export const UPDATE_USERCOMMENT = gql`
-  mutation updateUserComment($messageText: String!) {
-    updateUserComment(messageText: $messageText) {
-      _id
-      messageText
-      messageAuthor
-      createdAt
-    }
-  }
-`;
-
-// export const CREATE_PROJECT = gql`
-//   mutation createProject($projectName: String!) {
-//     createProject(projectName: $projectTitle) {
-//       _id
-//       projectName
-//       createdAt
-//     }
-//   }
-// `;
-
-// export const CREATE_PROJECTCOMMENT = gql`
-//   mutation createProjectComment($messageText: String!) {
-//     createProjectComment(messageText: $messageText) {
+// export const CREATE_USERCOMMENT = gql`
+//   mutation createUserComment($messageText: String!) {
+//     createUserComment(messageText: $messageText) {
 //       _id
 //       messageText
 //       messageAuthor
@@ -66,6 +35,40 @@ export const UPDATE_USERCOMMENT = gql`
 //     }
 //   }
 // `;
+
+// export const UPDATE_USERCOMMENT = gql`
+//   mutation updateUserComment($messageText: String!) {
+//     updateUserComment(messageText: $messageText) {
+//       _id
+//       messageText
+//       messageAuthor
+//       createdAt
+//     }
+//   }
+// `;
+
+export const CREATE_PROJECT = gql`
+mutation CreateProject($projectName: String!, $projectDescription: String!) {
+  createProject(projectName: $projectName, projectDescription: $projectDescription) {
+    owner
+    _id
+    projectName
+    projectDescription
+  }
+}
+`;
+
+export const CREATE_PROJECTCOMMENT = gql`
+mutation Mutation($commentText: String!, $projectName: String!) {
+  createProjectComment(commentText: $commentText, projectName: $projectName) {
+    commentText
+    username
+    projectRecipient
+    createdAt
+    updatedAt
+  }
+}
+`;
 
 // export const UPDATE_PROJECTCOMMENT = gql`
 //   mutation updateProjectComment($messageText: String!) {
@@ -97,7 +100,25 @@ export const UPDATE_USERCOMMENT = gql`
 //     }
 //   }
 // `;
+// export const UPDATE_PROJECTTASK = gql`
+//   mutation updateProjectTask($taskText: String!) {
+//     updateProjectTask(taskText: $taskText) {
+//       _id
+//       taskText
+//       createdAt
+//     }
+//   }
+// `;
 
+// export const DELETE_PROJECTTASK = gql`
+//   mutation deleteProjectTask($taskText: String!) {
+//     deleteProjectTask(taskText: $taskText) {
+//       _id
+//       taskText
+//       createdAt
+//     }
+//   }
+// `;
 // export const DELETE_PROJECTTASK = gql`
 //   mutation deleteProjectTask($taskText: String!) {
 //     deleteProjectTask(taskText: $taskText) {
@@ -112,7 +133,14 @@ export const UPDATE_USERCOMMENT = gql`
 //   mutation addProjectMemeber($) {
 //     addProjectMember() {
 //       _id
+// export const ADD_PROJECTMEMBER = gql`
+//   mutation addProjectMemeber($) {
+//     addProjectMember() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;
@@ -121,7 +149,14 @@ export const UPDATE_USERCOMMENT = gql`
 //   mutation updateUserProjects($) {
 //     updateUserProjects() {
 //       _id
+// export const UPDATE_USERPROJECTS = gql`
+//   mutation updateUserProjects($) {
+//     updateUserProjects() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;
@@ -130,7 +165,14 @@ export const UPDATE_USERCOMMENT = gql`
 //   mutation updateUserCoworkers($) {
 //     updateUserCoworkers() {
 //       _id
+// export const UPDATE_USERCOWORKERS = gql`
+//   mutation updateUserCoworkers($) {
+//     updateUserCoworkers() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;
@@ -139,7 +181,14 @@ export const UPDATE_USERCOMMENT = gql`
 //   mutation updateUserAboutMe($) {
 //     updateUserAboutMe() {
 //       _id
+// export const UPDATE_USERABOUTME = gql`
+//   mutation updateUserAboutMe($) {
+//     updateUserAboutMe() {
+//       _id
 
+//     }
+//   }
+// `;
 //     }
 //   }
 // `;

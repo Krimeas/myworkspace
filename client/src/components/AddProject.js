@@ -29,12 +29,11 @@ const AddProject = ({ projects }) => {
       const { data } = await createProject({
         variables: { ...formState },
       });
-
-      Auth.createProject(data.createProject.token);
+      console.log(data);
+      window.location.assign(`/projects/${data.createProject._id}`);
     } catch (e) {
       console.error(e);
     }
-
     SetFormState({
       projectName: "",
       projectDescription: "",

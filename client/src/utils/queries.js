@@ -46,6 +46,34 @@ query GetProjects {
 }
 `;
 
+export const QUERY_PROJECT = gql`
+query GetProjects($projectId: ID!) {
+  GetProjectById(projectId: $projectId) {
+    projectName
+    projectDescription
+    owner
+    members
+    comments {
+      _id
+      username
+      commentText
+      createdAt
+      updatedAt
+    }
+    tasks {
+      _id
+      username
+      taskName
+      createdAt
+      updatedAt
+      isComplete
+      isInProgress
+      isOpen
+    }
+  }
+}
+`;
+
 // export const QUERY_PROJECTCOMMENTS = gql`
 // query GetProjectComments($projectName: String!) {
 //   GetProjectComments(projectName: $projectName) {

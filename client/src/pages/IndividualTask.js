@@ -38,7 +38,7 @@ const Tasks = () => {
                   title="Some Feed for Thought(s)..." />
               )}
           </div> */}
-        </div>
+          </div>
 
           <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
             <h3>Individual Task</h3>
@@ -49,17 +49,14 @@ const Tasks = () => {
               {/*  */}
             </div>
 
-            <div>
             <div style={{ border: "1px dotted #1a1a1a" }}>
-            {/* {loading ? (
+              {loading ? (
                 <div>Loading...</div>
               ) : (
-                <DeleteTask task={task}/>
+                <DeleteTask task={task} />
               )}
             </div>
-            </div>
           </div>
-
           {/* my projects should hug the right side of the page. likely col-3 */}
           <div className="col-xl-2 justify-content-left bg-primary ">
             {/* <MyProjects 

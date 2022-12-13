@@ -11,15 +11,15 @@ const IndividualProject = ({project}) => {
       {
         <div key={_id} className="card mb-3">
         <div>
-          <h4 className="card-header bg-primary text-light p-2 m-0">{projectName}
+          <h4 className="card-header bg-primary text-light p-2 m-0">Project: {projectName}
           </h4>
         </div>
         <div>
-          <h4 className="card-header bg-primary text-light p-2 m-0">{projectDescription}
+          <h4 className="card-header bg-primary text-light p-2 m-0">Description: {projectDescription}
           </h4>
         </div>
         <div>
-          <h4 className="card-header bg-primary text-light p-2 m-0">{owner}
+          <h4 className="card-header bg-primary text-light p-2 m-0">Owner: {owner}
           </h4>
         </div>         
       </div>

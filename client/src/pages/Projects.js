@@ -22,14 +22,14 @@ const Projects = () => {
       {/* My Messages/comments should hug the left side of the page, likely col-3 */}
       <center><h1>THIS IS THE ALL PROJECTS PAGE</h1></center>
       <div className="flex-row justify-center"></div>
-      <div
+      {/* <div
         className="col-12 col-md-10 mb-3 p-3"
         style={{ border: "1px dotted #1a1a1a" }}
       >
-        {/* <MyMessageForm /> */}
+        <MyMessageForm />
 
 
-        {/* <div className="col-12 col-md-8 mb-3">
+        <div className="col-12 col-md-8 mb-3">
       {loading ? (
         <div>Loading...</div>
       ) : ( null
@@ -38,10 +38,10 @@ const Projects = () => {
         title="Some Feed for Thought(s)..."
         />
       )}
-    </div> */}
-      </div>
+    </div>
+      </div> */}
 
-      <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
+      <div className="col-xl-12" style={{ border: "1px dotted #1a1a1a" }}>
         <div style={{ border: "1px dotted #1a1a1a" }}>
           {loading ? (
             <div>Loading...</div>

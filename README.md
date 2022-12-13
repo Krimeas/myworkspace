@@ -29,9 +29,6 @@ myworkspace is an easy-to-use app for keeping track of important information wit
 *Coworkers* : Coworkers are your collegues within your organization that you share a network with, primarily through projects and tasks. If you are assigned to the same project or task as another employee within your organization that uses myworkspace, that employee is automatically added to you coworker list. 
 
 ___________________
-
-
-
 ## Github Repo link
 https://github.com/Krimeas/myworkspace
 
@@ -64,17 +61,17 @@ myworkspace was originally developed as part of the Coding Bootcamp as UT Austin
 ___________________
 ## Contributors
 
-- Allen Wang - database, generalist
-- Cody Berry - components, project direction
-- Tony Coniglio - database, readme, presentation
-- Alex Nguyen - front end, bootstrap, components
-- Mark Burmejo - components
-- Payton Ray - gql
+- [Allen Wang](https://github.com/allenwang1999) - database, generalist
+- [Cody Berry](https://github.com/Krimeas) - components, project direction
+- [Tony Coniglio](https://github.com/Tony-Coniglio) - database, readme, presentation
+- [Alex Nguyen](https://github.com/chrisnguyen12) - front end, bootstrap, components
+- [Mark Burmejo](https://github.com/Bermejo246) - components
+- [Payton Ray](https://github.com/PaytonRay) - gql
 
 
 ___________________
 #### License
-MIT License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Copyright (c) 2022 myworkspace
 

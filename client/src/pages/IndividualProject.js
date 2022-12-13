@@ -8,7 +8,8 @@ import { Container } from "react-bootstrap";
 // import ProjectMessageList from '../components/ProjectMessageList';
 // import MyProjectList from '../components/MyProjects';
 import IndividualProject from "../components/IndividualProject";
-import ProjectTask from "../components/ProjectTask";
+// import ProjectTask from "../components/ProjectTask";
+import CreateTask from "../components/CreateTask";
 
 import { QUERY_PROJECT } from "../utils/queries";
 // import { ADD_PROJECTCOMMENT} from '../utils/mutations';
@@ -20,14 +21,11 @@ const SingleProject = () => {
   const project = data?.GetProjectById || {};
 
   return (
-    <main>
-      {/* My Messages/comments should hug the left side of the page, likely col-3 */}
-      <h1>THIS IS THE INDIVIDUAL PROJECTS PAGE</h1>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
+    <Container fluid>
+      <main>
+        {/* My Messages/comments should hug the left side of the page, likely col-3 */}
+        <div className="text-center row col-xl-12">
+          <div className="col-xl-2 justify-content-left bg-primary ">
           {/* <ProjectMessageForm /> */}
         </div>
         {/* <div className="col-12 col-md-8 mb-3">
@@ -36,13 +34,12 @@ const SingleProject = () => {
           ) : ( null
             <ProjectMessageList
             comments={comments}
-            title="Some Feed for Thought(s)..."
+            title="Project COmments"
             />
           )}
         </div> */}
-          </div>
           <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
-            {/* Outputs project name and members/owner */}
+
             <h3>Individual Project</h3>
             <div style={{ border: "1px dotted #1a1a1a" }}>
               {loading ? (
@@ -51,8 +48,14 @@ const SingleProject = () => {
                 <IndividualProject project={project}/>
               )}
             </div>
-            {/* Outputs projects tasks names */}
             <div style={{ border: "1px dotted #1a1a1a" }}>
+            {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <CreateTask/>
+              )}
+            </div>
+            {/* <div style={{ border: "1px dotted #1a1a1a" }}>
               <h3>Project Tasks</h3>
               {/* {loading ? (
                 <div>Loading...</div>
@@ -64,11 +67,7 @@ const SingleProject = () => {
 
 
       {/* my projects should hug the right side of the page. likely col-3 */}
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
+        <div className="col-xl-2 justify-content-left bg-primary ">
           {/* <MyProjects 
           projects={projects}
           /> */}
@@ -76,6 +75,7 @@ const SingleProject = () => {
         </div>
       </div>
     </main>
+    </Container>
   );
 };
 

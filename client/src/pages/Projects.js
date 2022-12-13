@@ -10,7 +10,7 @@ import { Container } from "react-bootstrap";
 import AllProjects from "../components/AllProjects";
 import AddProject from "../components/AddProject";
 
-import { QUERY_PROJECTS } from "../utils/queries";
+import { QUERY_PROJECTS, QUERY_ME } from "../utils/queries";
 // import { ADD_PROJECT } from '../utils/mutations';
 
 const Projects = () => {

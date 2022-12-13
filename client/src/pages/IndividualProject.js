@@ -18,7 +18,6 @@ const SingleProject = () => {
   var {projectId} = useParams();
   const { loading, data } = useQuery(QUERY_PROJECT, {variables: { projectId }});
   const project = data?.GetProjectById || {};
-  console.log(project);
 
   return (
     <main>
@@ -49,17 +48,17 @@ const SingleProject = () => {
               {loading ? (
                 <div>Loading...</div>
               ) : (
-                <IndividualProject projects={project} />
+                <IndividualProject project={project}/>
               )}
             </div>
             {/* Outputs projects tasks names */}
             <div style={{ border: "1px dotted #1a1a1a" }}>
               <h3>Project Tasks</h3>
-              {loading ? (
+              {/* {loading ? (
                 <div>Loading...</div>
               ) : (
                 <ProjectTask tasks={project} />
-              )}
+              )} */}
             </div>
           </div>
 

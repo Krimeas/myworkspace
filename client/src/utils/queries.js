@@ -49,6 +49,7 @@ query GetProjects {
 export const QUERY_PROJECT = gql`
 query GetProjects($projectId: ID!) {
   GetProjectById(projectId: $projectId) {
+    _id
     projectName
     projectDescription
     owner

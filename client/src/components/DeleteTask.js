@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
-import { DELETE_TASK } from "../utils/mutations";
+import { DELETE_PROJECTTASK } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
@@ -11,7 +11,7 @@ const DeleteTask = ({ projectId }) => {
     taskName: "",
   });
 
-  const [deleteTask, { error, data }] = useMutation(DELETE_TASK);
+  const [deleteTask, { error, data }] = useMutation(DELETE_PROJECTTASK);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -49,4 +49,4 @@ const DeleteTask = ({ projectId }) => {
   );
 };
 
-export default CreateTask;
+export default DeleteTask;

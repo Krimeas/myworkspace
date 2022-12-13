@@ -10,14 +10,11 @@ import { Container } from "react-bootstrap";
 import IndividualProject from "../components/IndividualProject";
 import ProjectTask from "../components/ProjectTask";
 
-import { QUERY_PROJECTS, QUERY_PROJECTTASKS } from "../utils/queries";
+import { QUERY_PROJECTS } from "../utils/queries";
 // import { ADD_PROJECTCOMMENT} from '../utils/mutations';
+// import { ADD_PROJECTTASK} from '../utils/mutations';
 
 const SingleProject = () => {
-  const { loading, data } = useQuery(QUERY_PROJECTS, QUERY_PROJECTTASKS);
-  // const comments = data?.comments || [];
-  const projects = data?.GetProjects || [];
-  const projectTask = data?.GetProjectTasks || [];
   var {projectId} = useParams();
   const { loading, data } = useQuery(QUERY_PROJECT, {variables: { projectId }});
   const project = data?.GetProjectById || {};

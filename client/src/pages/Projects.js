@@ -16,6 +16,7 @@ import { QUERY_PROJECTS } from "../utils/queries";
 const Projects = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
   const projects = data?.GetProjects || [];
+  
   return (
     <Container fluid>
       <main>

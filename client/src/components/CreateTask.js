@@ -11,7 +11,7 @@ const AddTask = ({ projects }) => {
     taskText: "",
   });
 
-  const [createProject, { error, data }] = useMutation(CREATE_TASK);
+  const [createTask, { error, data }] = useMutation(CREATE_TASK);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,12 +26,12 @@ const AddTask = ({ projects }) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const project = dff;
-      const { data } = await createProject({
+      // const project = dff;
+      const { data } = await createTask({
         variables: { ...formState },
       });
       console.log(data);
-      window.location.assign(`/projects/${project}/${data.createTask._id}`);
+      // window.location.assign(`/projects/${project}/${data.createTask._id}`);
     } catch (e) {
       console.error(e);
     }
@@ -42,7 +42,7 @@ const AddTask = ({ projects }) => {
 
   return (
       <main>
-        <h3>Add a Project</h3>
+        <h3>Add a Task</h3>
         <div className="tab-content">
           <div
             className="tab-pane fade show active"

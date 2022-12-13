@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const IndividualTasks = ({ projectTasks, projects }) => {
+const AllProjectTasks = ({ projectTasks, projects }) => {
   console.log(projects)
   console.log(projectTasks)
   if (!projectTasks.length) {
@@ -19,7 +19,7 @@ const IndividualTasks = ({ projectTasks, projects }) => {
               to={`/projects/${project._id}/${projectTask._id}`}
             >
               <h4 className="card-header bg-primary text-light p-2 m-0">
-                {projectTask.taskText}
+                {projectTask.taskName}
               </h4>
             </Link>
           </div>
@@ -29,4 +29,4 @@ const IndividualTasks = ({ projectTasks, projects }) => {
   );
 };
 
-export default IndividualTasks;
+export default AllProjectTasks;

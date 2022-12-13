@@ -16,7 +16,7 @@ import { QUERY_PROJECTS } from "../utils/queries";
 const Projects = () => {
   const { loading, data } = useQuery(QUERY_PROJECTS);
   const projects = data?.GetProjects || [];
-  
+
   return (
     <main>
       {/* My Messages/comments should hug the left side of the page, likely col-3 */}
@@ -30,88 +30,84 @@ const Projects = () => {
 
 
         {/* <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : ( null
-            <MyMessageList
-            comments={comments}
-            title="Some Feed for Thought(s)..."
-            />
-          )}
-        </div> */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : ( null
+        <MyMessageList
+        comments={comments}
+        title="Some Feed for Thought(s)..."
+        />
+      )}
+    </div> */}
       </div>
 
-          <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
-            <div style={{ border: "1px dotted #1a1a1a" }}>
-            {loading ? (
-                <div>Loading...</div>
-              ) : (
-                <AddProject/>
-              )}
-            </div>
-            <div style={{ border: "1px dotted #1a1a1a" }}>
-            <h3>All Projects</h3>
-              {loading ? (
-                <div>Loading...</div>
-              ) : (
-                <AllProjects projects={projects} />
-              )}
-            </div>
-          </div>
-
-          {/* my projects should hug the right side of the page. likely col-3 */}
-
-          <div className="col-xl-2 justify-content-left bg-primary ">
-            {/* {loading ? (
-              <div>Loading...</div>
-            ) : (
-            <MyProjects 
-            projects={projects}
-            />
-            )} */}
-          </div>
+      <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
+        <div style={{ border: "1px dotted #1a1a1a" }}>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <AddProject />
+          )}
+        </div>
+        <div style={{ border: "1px dotted #1a1a1a" }}>
+          <h3>All Projects</h3>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <AllProjects projects={projects} />
+          )}
         </div>
       </div>
 
-      <div>
-       
-              <div class="container">
-                <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                  <div class="col mb-2">
-                    <div class="p-3 border bg-light">Row column</div>
-                  </div>
-                </div>
-              </div>
+      {/* my projects should hug the right side of the page. likely col-3 */}
+
+      <div className="col-xl-2 justify-content-left bg-primary ">
+        {/* {loading ? (
+          <div>Loading...</div>
+        ) : (
+        <MyProjects
+        projects={projects}
+        />
+        )} */}
+      </div>
+    <div>
+
+        <div class="container">
+          <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
             </div>
-      
-    </main >
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+            <div class="col mb-2">
+              <div class="p-3 border bg-light">Row column</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 
 

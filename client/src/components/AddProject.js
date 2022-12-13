@@ -29,6 +29,8 @@ const AddProject = ({ projects }) => {
       const { data } = await createProject({
         variables: { ...formState },
       });
+      console.log(data);
+      window.location.assign(`/projects/${data.createProject._id}`);
     } catch (e) {
       console.error(e);
     }
@@ -74,11 +76,6 @@ const AddProject = ({ projects }) => {
             <button type="submit" className="btn btn-primary btn-block mb-4">
               Submit
             </button>
-            {data? (
-              <p>Created project: {data.createProject.projectName}</p>
-            ) : (
-              <p></p>
-            )}
           </form>
         </div>
       </main>

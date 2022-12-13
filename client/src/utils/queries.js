@@ -65,6 +65,7 @@ query GetProjects($projectId: ID!) {
       _id
       username
       taskName
+      project
       createdAt
       updatedAt
       isComplete

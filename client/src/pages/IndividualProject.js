@@ -27,6 +27,7 @@ const SingleProject = () => {
         <div className="text-center row col-xl-12">
           <div className="col-xl-2 justify-content-left bg-primary ">
           {/* <ProjectMessageForm /> */}
+          </div>
         </div>
         {/* <div className="col-12 col-md-8 mb-3">
           {loading ? (
@@ -61,8 +62,9 @@ const SingleProject = () => {
                 <div>Loading...</div>
               ) : (
                 <ProjectTask tasks={project} />
-              )} */}
-            </div>
+              )} 
+              </div>
+              */}
           </div>
 
 
@@ -73,7 +75,6 @@ const SingleProject = () => {
           /> */}
           
         </div>
-      </div>
     </main>
     </Container>
   );

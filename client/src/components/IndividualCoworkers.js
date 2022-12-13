@@ -1,6 +1,6 @@
 import React from "react";
 
-const styles = {
+// const styles = {
   /* css for cards */
 
 // Card: {
@@ -14,7 +14,7 @@ const styles = {
 // Card: hover {
 //   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 // }
-}
+// }
 
 
 const IndividualCoworkers = () => {

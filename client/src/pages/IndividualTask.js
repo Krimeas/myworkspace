@@ -46,11 +46,11 @@ const Tasks = () => {
 
             <div>
             <div style={{ border: "1px dotted #1a1a1a" }}>
-            {loading ? (
+            {/* {loading ? (
                 <div>Loading...</div>
               ) : (
                 <DeleteTask taskName={projectId}/>
-              )}
+              )} */}
             </div>
             </div>
           </div>

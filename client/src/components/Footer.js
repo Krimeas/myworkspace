@@ -1,9 +1,8 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+
   return (
     <footer className="text-align-center">
         <h4><center> Made with React by</center></h4>

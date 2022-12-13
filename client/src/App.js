@@ -19,7 +19,7 @@ import IndividualTask from "./pages/IndividualTask";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import IndividualCoworkers from "./components/IndividualCoworkers";
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",

@@ -40,7 +40,7 @@ const CreateTask = ({projectId}) => {
 
   return (
       <main>
-        <h3>Add a Project</h3>
+        <h3>Add a Task</h3>
         <div className="tab-content">
           <div
             className="tab-pane fade show active"

@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 // import ProjectMessageList from '../components/ProjectMessageList';
 // import MyProjectList from '../components/MyProjects';
 import IndividualProject from "../components/IndividualProject";
-// import ProjectTask from "../components/ProjectTask";
+import IndividualTask from "../components/IndividualTask";
 import CreateTask from "../components/CreateTask";
 
 import { QUERY_PROJECT } from "../utils/queries";
@@ -16,8 +16,10 @@ import { QUERY_PROJECT } from "../utils/queries";
 // import { ADD_PROJECTTASK} from '../utils/mutations';
 
 const SingleProject = () => {
-  var {projectId} = useParams();
-  const { loading, data } = useQuery(QUERY_PROJECT, {variables: { projectId }});
+  var { projectId } = useParams();
+  const { loading, data } = useQuery(QUERY_PROJECT, {
+    variables: { projectId },
+  });
   const project = data?.GetProjectById || {};
 
   return (
@@ -26,10 +28,10 @@ const SingleProject = () => {
         {/* My Messages/comments should hug the left side of the page, likely col-3 */}
         <div className="text-center row col-xl-12">
           <div className="col-xl-2 justify-content-left bg-primary ">
-          {/* <ProjectMessageForm /> */}
+            {/* <ProjectMessageForm /> */}
           </div>
-        </div>
-        {/* <div className="col-12 col-md-8 mb-3">
+
+          {/* <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : ( null
@@ -40,42 +42,39 @@ const SingleProject = () => {
           )}
         </div> */}
           <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
-
             <h3>Individual Project</h3>
             <div style={{ border: "1px dotted #1a1a1a" }}>
               {loading ? (
                 <div>Loading...</div>
               ) : (
-                <IndividualProject project={project}/>
+                <IndividualProject project={project} />
               )}
             </div>
             <div style={{ border: "1px dotted #1a1a1a" }}>
-            {loading ? (
+              {loading ? (
                 <div>Loading...</div>
               ) : (
-                <CreateTask projectId={projectId}/>
+                <CreateTask projectId={projectId} />
               )}
             </div>
-            {/* <div style={{ border: "1px dotted #1a1a1a" }}>
+            <div style={{ border: "1px dotted #1a1a1a" }}>
               <h3>Project Tasks</h3>
-              {/* {loading ? (
+              {loading ? (
                 <div>Loading...</div>
               ) : (
-                <ProjectTask tasks={project} />
+                <IndividualTask tasks={project} />
               )} 
-              </div>
-              */}
+            </div>
           </div>
 
-
-      {/* my projects should hug the right side of the page. likely col-3 */}
-        <div className="col-xl-2 justify-content-left bg-primary ">
-          {/* <MyProjects 
+          {/* my projects should hug the right side of the page. likely col-3 */}
+          <div className="col-xl-2 justify-content-left bg-primary ">
+            {/* <MyProjects 
           projects={projects}
           /> */}
-          
+          </div>
         </div>
-    </main>
+      </main>
     </Container>
   );
 };

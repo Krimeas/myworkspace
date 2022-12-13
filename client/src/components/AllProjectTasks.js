@@ -1,29 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AllProjectTasks = ({ projectTasks, projects }) => {
-  console.log(projects)
-  console.log(projectTasks)
-  if (!projectTasks.length) {
-    return <h3>You are not in any projects</h3>;
+const AllProjectTasks = ({tasks}) => {
+  console.log(tasks)
+  if (!tasks) {
+    return <h3>There are no tasks.</h3>;
   }
-  // const { _id, taskText} = ProjectTasks;
+  // const { _id, taskName} = tasks.task;
   return (
     <div>
-      {projects &&
-        projects.map((project) => (
-        projectTasks.map((projectTask) => (
-          <div key={projectTask._id} className="card mb-3">
+      {tasks &&
+        tasks.map((task) => (
+          // console.log(task)
+          <div key={task._id} className="card mb-3">
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/projects/${project._id}/${projectTask._id}`}
+              to={`/tasks/${task.project}/${task._id}`}
             >
               <h4 className="card-header bg-primary text-light p-2 m-0">
-                {projectTask.taskName}
+                {task.taskName}
               </h4>
             </Link>
           </div>
-        ))
         ))}
     </div>
   );

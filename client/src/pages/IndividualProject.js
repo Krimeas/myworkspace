@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 // import ProjectMessageList from '../components/ProjectMessageList';
 // import MyProjectList from '../components/MyProjects';
 import IndividualProject from "../components/IndividualProject";
-import IndividualTask from "../components/IndividualTask";
+import AllProjectTasks from "../components/AllProjectTasks";
 import CreateTask from "../components/CreateTask";
 
 import { QUERY_PROJECT } from "../utils/queries";
@@ -62,7 +62,7 @@ const SingleProject = () => {
               {loading ? (
                 <div>Loading...</div>
               ) : (
-                <IndividualTask tasks={project} />
+                <AllProjectTasks tasks={project.tasks} />
               )} 
             </div>
           </div>

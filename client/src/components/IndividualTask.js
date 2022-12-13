@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const IndividualTasks = ({ projectTasks, projects }) => {
   console.log(projects)
   console.log(projectTasks)
-  if (!projectTasks.length) {
-    return <h3>You are not in any projects</h3>;
-  }
+  // if (!projectTasks.length) {
+  //   return <h3>You are not in any projects</h3>;
+  // }
   // const { _id, taskText} = ProjectTasks;
   return (
     <div>
-      {projects &&
+      {/* {projects &&
         projects.map((project) => (
         projectTasks.map((projectTask) => (
           <div key={projectTask._id} className="card mb-3">
@@ -24,7 +24,8 @@ const IndividualTasks = ({ projectTasks, projects }) => {
             </Link>
           </div>
         ))
-        ))}
+        ))} */}
+
     </div>
   );
 };

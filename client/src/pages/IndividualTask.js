@@ -7,10 +7,10 @@ import { Container } from "react-bootstrap";
 // import ProjectMessageForm from '../components/ProjectMessageForm';
 // import ProjectMessageList from '../components/ProjectMessageList';
 // import MyProjectList from '../components/MyProjects';
-// import IndividualTask from '../components/IndividualTask';
+import IndividualTask from '../components/IndividualTask';
 
 // import { QUERY_PROJECTCOMMENTS, QUERY_PROJECTS} from '../utils/queries';
-// import { ADD_PROJECTCOMMENT, ADD_TASK} from '../utils/mutations';
+// import { DELETE_TASK } from '../utils/mutations';
 
 const Tasks = () => {
   // const { loading, data } = useQuery(QUERY_PROJECTCOMMENTS, QUERY_PROJECTS);
@@ -45,9 +45,13 @@ const Tasks = () => {
             </div>
 
             <div>
-              {/*  */}
-              {/* Eventually, the Individual Task Component goes in another div here. */}
-              {/*  */}
+            <div style={{ border: "1px dotted #1a1a1a" }}>
+            {/* {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <DeleteTask projectId={projectId}/>
+              )} */}
+            </div>
             </div>
           </div>
 

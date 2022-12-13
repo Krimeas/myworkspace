@@ -53,7 +53,7 @@ const SingleProject = () => {
             {loading ? (
                 <div>Loading...</div>
               ) : (
-                <CreateTask/>
+                <CreateTask projectId={projectId}/>
               )}
             </div>
             {/* <div style={{ border: "1px dotted #1a1a1a" }}>

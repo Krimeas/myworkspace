@@ -74,7 +74,7 @@ const typeDefs = gql`
         createProjectComment(commentText: String!, projectName: String!): Comment
         createUserComment(commentText: String!): Comment
         createProject(projectName: String!, projectDescription: String!): Project
-        createTask(taskName: String!, projectName: String!): Task
+        createTask(taskName: String!, projectId: ID!): Task
         addProjectMember(projectName: String!, memberName: String!): Project
         updateUserAboutMe(aboutText: String!): User
       }

@@ -82,13 +82,19 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 // `;
 
 export const CREATE_TASK = gql`
-  mutation createTask($taskText: String!) {
-    createTask(taskText: $taskText) {
-      _id
-      taskText
-      createdAt
-    }
+mutation CreateTask($taskName: String!, $projectId: ID!) {
+  createTask(taskName: $taskName, projectId: $projectId) {
+    _id
+    username
+    taskName
+    project
+    updatedAt
+    createdAt
+    isComplete
+    isInProgress
+    isOpen
   }
+}
 `;
 
 // export const UPDATE_PROJECTTASK = gql`

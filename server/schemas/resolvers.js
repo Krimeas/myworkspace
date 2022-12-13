@@ -150,18 +150,18 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         
-        createTask: async (parent, { taskName, projectName }, context) => {
+        createTask: async (parent, { taskName, projectId }, context) => {
             console.log(context.user);
             if (context.user) {
                 const task = await Task.create({
                     taskName,
                     username: context.user.username,
-                    project: projectName
+                    project: projectId
                 });
                 
 
                 await Project.findOneAndUpdate(
-                    { projectName },
+                    { _id: projectId },
                     { $addToSet: { tasks: task._id } }
                 )
                 return task;

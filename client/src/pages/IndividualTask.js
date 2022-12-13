@@ -1,21 +1,21 @@
 import React from "react";
 // import { useParams } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 // import { useMutation } from '@apollo/client';
 import { Container } from "react-bootstrap";
 
 // import ProjectMessageForm from '../components/ProjectMessageForm';
 // import ProjectMessageList from '../components/ProjectMessageList';
 // import MyProjectList from '../components/MyProjects';
-import IndividualTask from '../components/IndividualTask';
+// import IndividualTask from '../components/IndividualTask';
+import DeleteTask from '../components/DeleteTask';
 
-// import { QUERY_PROJECTCOMMENTS, QUERY_PROJECTS} from '../utils/queries';
-// import { DELETE_TASK } from '../utils/mutations';
+import { QUERY_PROJECT } from '../utils/queries';
 
 const Tasks = () => {
-  // const { loading, data } = useQuery(QUERY_PROJECTCOMMENTS, QUERY_PROJECTS);
+  const { loading, data } = useQuery( QUERY_PROJECT );
   // const comments = data?.comments || [];
-  // const projects = data?.projects || [];
+  const projects = data?.GetProjects || [];
 
   return (
     <Container fluid>
@@ -46,11 +46,11 @@ const Tasks = () => {
 
             <div>
             <div style={{ border: "1px dotted #1a1a1a" }}>
-            {/* {loading ? (
+            {loading ? (
                 <div>Loading...</div>
               ) : (
-                <DeleteTask projectId={projectId}/>
-              )} */}
+                <DeleteTask taskName={projectId}/>
+              )}
             </div>
             </div>
           </div>

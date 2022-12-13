@@ -85,7 +85,7 @@ function App() {
                 element={<IndividualCoworker/>}
               /> */}
               <Route
-                path="/projects/:projectId/:taskID"
+                path="/projects/:projectId/:taskId"
                 element={<IndividualTask />}
               />
             </Routes>

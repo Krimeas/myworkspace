@@ -65,7 +65,7 @@ query GetProjects($projectId: ID!) {
       _id
       username
       taskName
-      project
+      projectId
       createdAt
       updatedAt
       isComplete
@@ -93,20 +93,18 @@ query GetProjects($projectId: ID!) {
 // }
 // `;
 
-// export const QUERY_PROJECTTASKS = gql`
-// query GetProjectTasks($projectName: String!) {
-//   GetProjectTasks(projectName: $projectName) {
-//     projectName
-//     projectDescription
-//     tasks {
-//       username
-//       taskName
-//       isComplete
-//       isOpen
-//       isInProgress
-//       createdAt
-//       updatedAt
-//     }
-//   }
-// }
-// `;
+export const QUERY_TASK = gql`
+query GetTask($taskId: ID!) {
+  GetTask(taskId: $taskId) {
+    _id
+    taskName
+    projectId
+    username
+    updatedAt
+    createdAt
+    isOpen
+    isInProgress
+    isComplete
+  }
+}
+`;

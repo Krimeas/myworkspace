@@ -15,7 +15,7 @@ const AllProjectTasks = ({tasks}) => {
           <div key={task._id} className="card mb-3">
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/projects/${task.project}/${task._id}`}
+              to={`/projects/${task.projectId}/${task._id}`}
             >
               <h4 className="card-header bg-primary text-light p-2 m-0">
                 {task.taskName}

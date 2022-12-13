@@ -56,16 +56,10 @@ const resolvers = {
             if(context.user) return Project.findOne({ _id: projectId }).populate('comments').populate('members').populate('tasks');
             throw new AuthenticationError('Incorrect credentials');
         },
-        //consolidated all getproject things into GetProjectById
-        // GetProjectMembers: async (parent, { projectId }) => {
-        //     return Project.findOne({ _id: projectId }).populate('members');
-        // },
-        // GetProjectTasks: async (parent, { projectId }) => {
-        //     return Project.findOne({ _id: projectId }).populate('tasks');
-        // },
-        // GetProjectComments: async (parent, { projectId }) => {
-        //     return Project.findOne({ _id: projectId}).populate('comments');
-        // },
+        GetTask: async (parent, { taskId }, context) => {
+            if(context.user) return Task.findOne({_id: taskId});
+            throw new AuthenticationError('Incorrect credentials');
+        },
         me: async (parent, args, context) => {
             if(context.user) {
                 return User.findOne({_id: context.user._id});
@@ -155,7 +149,7 @@ const resolvers = {
                 const task = await Task.create({
                     taskName,
                     username: context.user.username,
-                    project: projectId
+                    projectId: projectId
                 });
                 
 

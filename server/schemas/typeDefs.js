@@ -20,7 +20,7 @@ const typeDefs = gql`
         _id: ID
         username: String!
         taskName: String!
-        project: String!
+        projectId: String!
         isOpen: Boolean
         isInProgress: Boolean
         isComplete: Boolean
@@ -65,6 +65,7 @@ const typeDefs = gql`
         GetProjects: [Project]
         GetProjectById(projectId: ID!): Project
         GetFriendComments(username: String!): [Comment]
+        GetTask(taskId: ID!): Task
         me: User
       }
 

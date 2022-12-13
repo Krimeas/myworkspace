@@ -87,7 +87,7 @@ mutation CreateTask($taskName: String!, $projectId: ID!) {
     _id
     username
     taskName
-    project
+    projectId
     updatedAt
     createdAt
     isComplete

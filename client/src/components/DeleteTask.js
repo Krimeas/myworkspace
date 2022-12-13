@@ -6,42 +6,28 @@ import { DELETE_PROJECTTASK } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
-const DeleteTask = ({ projectId }) => {
-  const [formState, SetFormState] = useState({
-    taskName: "",
-  });
+const DeleteTask = ({ task }) => {
+  const {taskName,  projectId} = task;
 
   const [deleteTask, { error, data }] = useMutation(DELETE_PROJECTTASK);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    SetFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const handleFormSubmit = async (event) => {
+  const deleteTaskEvent = async (event) => {
     event.preventDefault();
     try {
       const { data } = await deleteTask({
-        variables: { ...formState, projectId },
+        variables: { taskName, projectId },
       });
       console.log(data);
       window.location.assign(`/projects/${projectId}`);
     } catch (e) {
       console.error(e);
     }
-    SetFormState({
-      taskName: "",
-    });
   };
 
   return (
     <main>
       <div>
-        <button type="submit" className="btn btn-danger btn-block mb-4">
+        <button type="submit" className="btn btn-danger btn-block mb-4" onClick={deleteTaskEvent}>
           Delete
         </button>
       </div>

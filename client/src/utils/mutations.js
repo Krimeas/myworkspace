@@ -107,15 +107,15 @@ mutation CreateTask($taskName: String!, $projectId: ID!) {
 //   }
 // `;
 
-// export const DELETE_PROJECTTASK = gql`
-//   mutation deleteProjectTask($taskText: String!) {
-//     deleteProjectTask(taskText: $taskText) {
-//       _id
-//       taskText
-//       createdAt
-//     }
-//   }
-// `;
+export const DELETE_PROJECTTASK = gql`
+mutation Mutation($taskName: String!, $projectId: ID!) {
+  deleteTask(taskName: $taskName, projectId: $projectId) {
+    _id
+    username
+    taskName
+  }
+}
+`;
 
 // export const DELETE_PROJECTTASK = gql`
 //   mutation deleteProjectTask($taskText: String!) {

@@ -1,16 +1,18 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { useMutation } from '@apollo/client';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
+import { Container } from "react-bootstrap";
 
 // import ProjectMessageForm from '../components/ProjectMessageForm';
 // import ProjectMessageList from '../components/ProjectMessageList';
 // import MyProjectList from '../components/MyProjects';
-// import ProjectMembers from '../components/ProjectMembers';
-// import ProjectTask from '../components/ProjectTask';
+import IndividualProject from "../components/IndividualProject";
+import ProjectTask from "../components/ProjectTask";
 
-import { QUERY_PROJECT } from '../utils/queries';
+import { QUERY_PROJECT } from "../utils/queries";
 // import { ADD_PROJECTCOMMENT} from '../utils/mutations';
+// import { ADD_PROJECTTASK} from '../utils/mutations';
 
 const SingleProject = () => {
   var {projectId} = useParams();
@@ -39,25 +41,27 @@ const SingleProject = () => {
             />
           )}
         </div> */}
-      </div>
-
-      <div>
-{/*  */}
-        {/* Eventually, the Name gets pulled and goes here.  Top Center of page, wrapped in blue. */}
-{/*  */}
-      </div>
-
-      <div>
-{/*  */}
-        {/* Eventually, the Project Memebers Component goes in another div here. Center Middle of Page */}
-{/*  */}
-      </div>
-
-      <div>
-{/*  */}
-        {/* Eventually, the Project Tasks  Component goes in another div here. Center Bottom of Page*/}
-{/*  */}
-      </div>
+          </div>
+          <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
+            {/* Outputs project name and members/owner */}
+            <h3>Individual Project</h3>
+            <div style={{ border: "1px dotted #1a1a1a" }}>
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <IndividualProject projects={project} />
+              )}
+            </div>
+            {/* Outputs projects tasks names */}
+            <div style={{ border: "1px dotted #1a1a1a" }}>
+              <h3>Project Tasks</h3>
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <ProjectTask tasks={project} />
+              )}
+            </div>
+          </div>
 
 
       {/* my projects should hug the right side of the page. likely col-3 */}

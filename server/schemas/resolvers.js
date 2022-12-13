@@ -31,8 +31,8 @@ Mutations: Should we just put CRUD stuff in there? Why is login there too? Do pa
 const resolvers = {
     Query: {
         //what do parents, context, args params do??????????
-        GetUserById: async (parent, { userId }) => {
-            return User.findOne({ _id: userId });
+        GetUserByUsername: async (parent, { username }) => {
+            return User.findOne({ username });
         },
         GetUserCommentsByUsername: async (parent, { username }) => {
             const params = username ? { username: username, userRecipient: { $ne: null } } : {};
@@ -48,18 +48,24 @@ const resolvers = {
         GetUserProjects: async (parent, { username }) => {
             return User.findOne({ username }).populate('projects');
         },
-        GetProjects: async () => {
-            return Project.find();
+        GetProjects: async (parent, args, context) => {
+            if(context.user) return Project.find();
+            throw new AuthenticationError('Incorrect credentials');
         },
-        GetProjectById: async (parent, { projectId }) => {
-            return Project.findOne({ _id: projectId });
+        GetProjectById: async (parent, { projectId }, context) => {
+            if(context.user) return Project.findOne({ _id: projectId }).populate('comments').populate('members').populate('tasks');
+            throw new AuthenticationError('Incorrect credentials');
         },
-        GetProjectMembers: async (parent, { projectName }) => {
-            return Project.findOne({ projectName }).populate('members');
-        },
-        GetProjectTasks: async (parent, { projectName }) => {
-            return Project.findOne({ projectName }).populate('tasks');
-        },
+        //consolidated all getproject things into GetProjectById
+        // GetProjectMembers: async (parent, { projectId }) => {
+        //     return Project.findOne({ _id: projectId }).populate('members');
+        // },
+        // GetProjectTasks: async (parent, { projectId }) => {
+        //     return Project.findOne({ _id: projectId }).populate('tasks');
+        // },
+        // GetProjectComments: async (parent, { projectId }) => {
+        //     return Project.findOne({ _id: projectId}).populate('comments');
+        // },
         me: async (parent, args, context) => {
             if(context.user) {
                 return User.findOne({_id: context.user._id});
@@ -74,9 +80,6 @@ const resolvers = {
             }
             return comments;
         },
-        GetProjectComments: async (parent, {projectName}) => {
-            return Project.findOne({ projectName }).populate('comments');
-        }
     },
 
     Mutation: {

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
-
-// import { ADD_USER } from '../utils/mutations';
-
-import Auth from '../utils/auth';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { CREATE_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
   });
-  //   const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,111 +27,112 @@ const Signup = () => {
     event.preventDefault();
     console.log(formState);
 
-    // try {
-    //   const { data } = await addUser({
-    //     variables: { ...formState },
-    //   });
+    try {
+      const { data } = await createUser({
+        variables: { ...formState },
+      });
 
-    //   Auth.login(data.addUser.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+      Auth.login(data.createUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
     <main className="flex-row justify-center mb-4 row">
-      <div class="container h-100">
-        <div class="row h-100 justify-content-center align-items-center">
-          <div class="col-lg-4 col-lg-offset-4">
-            <div class="container">
-              <h4 class="card-header bg-dark text-light p-2">Sign Up</h4>
+      <div className="container h-100">
+        <div className="row h-100 justify-content-center align-items-center">
+          <div className="col-lg-12 col-lg-offset-4">
+            <div className="container col-lg-12">
+              <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
             </div>
-
-            {/* {data ? 
-            (
+            {data ? (
               <p>
-                <Link to="/">Go Home {' '}.</Link>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
               </p>
-            ) : ( */}
-
+            ) : (
             <form onSubmit={handleFormSubmit}>
-              <div class="container d-flex justify-content-center">
-                <div class="col-lg-4 col-lg-offset-4">
-                  <div class="d-flex justify-content-center lign-items-center">
-                    <div class="vstack gap-3">
-
-                      <div class="mb-3 mt-3">
-                        <div class="col-md-3 mb-5">
-                          <input
-                            className="form-input"
-                            placeholder="Your username"
-                            name="username"
-                            type="text"
-                            value={formState.name}
-                            onChange={handleChange}
-                          />
-                        </div>
+              <div className="container d-flex justify-content-center">
+                <div className="col-lg-12 col-lg-offset-4">
+                  <div className="d-flex justify-content-center lign-items-center">
+                    <div className="vstack gap-3 col-lg-10">
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Create a username"
+                          name="username"
+                          type="text"
+                          value={formState.username}
+                          onChange={handleChange}
+                        />
                       </div>
 
-                      <div class="mb-3 mt-3">
-                        <div class="col-md-3 mb-5">
-                          <input
-                            className="form-input"
-                            placeholder="Your email"
-                            name="email"
-                            type="email"
-                            value={formState.email}
-                            onChange={handleChange}
-                          />
-                        </div>
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Your First Name"
+                          name="firstName"
+                          type="text"
+                          value={formState.firstName}
+                          onChange={handleChange}
+                        />
                       </div>
 
-                      <div class="mb-3 mt-3">
-                        <div class="col-md-3 mb-5">
-                          <input
-                            className="form-input"
-                            placeholder="******"
-                            name="password"
-                            type="password"
-                            value={formState.password}
-                            onChange={handleChange}
-                          />
-                        </div>
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Your Last Name"
+                          name="lastName"
+                          type="text"
+                          value={formState.lastName}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Your email"
+                          name="email"
+                          type="email"
+                          value={formState.email}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="mb-3 mt-3">
+                        <input
+                          className="form-control"
+                          placeholder="Create a password"
+                          name="password"
+                          type="password"
+                          value={formState.password}
+                          onChange={handleChange}
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-            </form>
-
-
-
-
-
-            <button
+              <button
               className="btn btn-block btn-primary"
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               type="submit"
             >
               Submit
             </button>
-
-
-
-
-
-            {/* )} */}
-
-            {/* {error && (
+            </form>
+            )}
+            {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>
-    </main >
+    </main>
   );
 };
 

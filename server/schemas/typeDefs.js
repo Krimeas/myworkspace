@@ -11,7 +11,7 @@ const typeDefs = gql`
         lastName: String
         aboutMe: String
         profilePicture: String
-        coworkers: String
+        coworkers: [String]
         projects: [Project]!
         comments: [Comment]!
     }
@@ -57,17 +57,14 @@ const typeDefs = gql`
     }
 
     type Query {
-        GetUserById(userId: ID!): User
+        GetUserByUsername(username: String!): User
         GetUserCommentsByUsername(username: String!): [Comment]
         GetProjectCommentsByUsername(username: String!): [Comment]
         GetUserCoworkers(username: String!): [User]
         GetUserProjects(username: String!): User
         GetProjects: [Project]
         GetProjectById(projectId: ID!): Project
-        GetProjectMembers(projectName: String!): Project
-        GetProjectTasks(projectName: String!): Project
         GetFriendComments(username: String!): [Comment]
-        GetProjectComments(projectName: String!): Project
         me: User
       }
 

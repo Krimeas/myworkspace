@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import { useParams } from 'react-router-dom';
 // import { useQuery } from '@apollo/client';
 // import { useMutation } from '@apollo/client';
@@ -11,7 +11,6 @@ import React from 'react';
 // import { QUERY_USERCOMMENTS, QUERY_PROJECTS} from '../utils/queries';
 // import { ADD_USERCOMMENT } from '../utils/mutations';
 
-
 const User = () => {
   // const { loading, data } = useQuery(QUERY_USERCOMMENTS, QUERY_PROJECTS);
   // const comments = data?.comments || [];
@@ -20,45 +19,41 @@ const User = () => {
   return (
     <main>
       {/* My Messages/comments should hug the left side of the page, likely col-3 */}
-      <h1>THIS IS THE USERS PAGE</h1>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
+      <div className="text-center row col-xl-12">
+        <div className="col-xl-2 justify-content-left bg-primary ">
           {/* <MyMessageForm /> */}
+          {/* <div className="col-12 col-xl-8 mb-3">
+                {loading ? (
+                  <div>Loading...</div>
+                ) : ( null
+                  <MyMessageList
+                  comments={comments}
+                  title="Some Feed for Thought(s)..."
+                  />
+                )}
+              </div> */}
         </div>
-        {/* <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : ( null
-            <MyMessageList
-            comments={comments}
-            title="Some Feed for Thought(s)..."
+
+        <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
+          <div style={{ border: "1px dotted #1a1a1a" }}>
+            <h3>USER COMPONENT</h3>
+            {/*  */}
+            {/* Eventually, the User Compoents go in another div here.  Whatever we decide those are.  About me and such? */}
+            {/*  */}
+          </div>
+        </div>
+
+          {/* my projects should hug the right side of the page. likely col-3 */}
+
+          <div className="col-xl-2 justify-content-left bg-primary ">
+            {/* {loading ? (
+              <div>Loading...</div>
+            ) : (
+            <MyProjects 
+            projects={projects}
             />
-          )}
-        </div> */}
-      </div>
-
-
-      <div>
-{/*  */}
-        {/* Eventually, the User Compoents go in another div here.  Whatever we decide those are.  About me and such? */}
-{/*  */}
-      </div>
-
-
-      {/* my projects should hug the right side of the page. likely col-3 */}
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          {/* <MyProjects 
-          projects={projects}
-          /> */}
-          
-        </div>
+            )} */}
+          </div>
       </div>
     </main>
   );

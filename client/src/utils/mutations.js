@@ -81,25 +81,16 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 //   }
 // `;
 
-// export const CREATE_TASK = gql`
-//   mutation createTask($taskText: String!) {
-//     createTask(taskText: $taskText) {
-//       _id
-//       taskText
-//       createdAt
-//     }
-//   }
-// `;
+export const CREATE_TASK = gql`
+  mutation createTask($taskText: String!) {
+    createTask(taskText: $taskText) {
+      _id
+      taskText
+      createdAt
+    }
+  }
+`;
 
-// export const UPDATE_PROJECTTASK = gql`
-//   mutation updateProjectTask($taskText: String!) {
-//     updateProjectTask(taskText: $taskText) {
-//       _id
-//       taskText
-//       createdAt
-//     }
-//   }
-// `;
 // export const UPDATE_PROJECTTASK = gql`
 //   mutation updateProjectTask($taskText: String!) {
 //     updateProjectTask(taskText: $taskText) {
@@ -119,6 +110,7 @@ mutation Mutation($commentText: String!, $projectName: String!) {
 //     }
 //   }
 // `;
+
 // export const DELETE_PROJECTTASK = gql`
 //   mutation deleteProjectTask($taskText: String!) {
 //     deleteProjectTask(taskText: $taskText) {

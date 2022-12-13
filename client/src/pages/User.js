@@ -1,20 +1,21 @@
 import React from "react";
-// import { useParams } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
-// import { useMutation } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
 // import MyMessageForm from '../components/MyMessageForm';
 // import MyMessageList from '../components/MyMessageList';
 // import MyProjectList from '../components/MyProjects';
 // import UserComp from '../components/UserComp';
 
-// import { QUERY_USERCOMMENTS, QUERY_PROJECTS} from '../utils/queries';
+import { QUERY_ME} from '../utils/queries';
 // import { ADD_USERCOMMENT } from '../utils/mutations';
 
 const User = () => {
-  // const { loading, data } = useQuery(QUERY_USERCOMMENTS, QUERY_PROJECTS);
+  const { loading, data } = useQuery(QUERY_ME);
   // const comments = data?.comments || [];
   // const projects = data?.projects || [];
+  const user = data?.me || {};
 
   return (
     <main>
@@ -37,9 +38,19 @@ const User = () => {
         <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
           <div style={{ border: "1px dotted #1a1a1a" }}>
             <h3>USER COMPONENT</h3>
-            {/*  */}
-            {/* Eventually, the User Compoents go in another div here.  Whatever we decide those are.  About me and such? */}
-            {/*  */}
+            {
+              loading ? (
+                <h1>Loading...</h1>
+              ) : (
+                <div>
+                  <h3>First Name: {user.firstName}</h3>
+                  <h3>Last Name: {user.lastName}</h3>
+                  <h3>Username: {user.username}</h3>
+                  <h3>Email: {user.email}</h3>
+                </div>
+                
+              )
+            }
           </div>
         </div>
 

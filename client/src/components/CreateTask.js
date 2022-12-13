@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { CREATE_TASK } from "../utils/mutations";
 
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
 const CreateTask = ({projectId}) => {
   const [formState, SetFormState] = useState({

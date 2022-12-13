@@ -20,14 +20,15 @@ const Projects = () => {
   return (
     <main>
       {/* My Messages/comments should hug the left side of the page, likely col-3 */}
-      <h1>THIS IS THE ALL PROJECTS PAGE</h1>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: "1px dotted #1a1a1a" }}
-        >
-          {/* <MyMessageForm /> */}
-        </div>
+      <center><h1>THIS IS THE ALL PROJECTS PAGE</h1></center>
+      <div className="flex-row justify-center"></div>
+      <div
+        className="col-12 col-md-10 mb-3 p-3"
+        style={{ border: "1px dotted #1a1a1a" }}
+      >
+        {/* <MyMessageForm /> */}
+
+
         {/* <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
@@ -41,15 +42,15 @@ const Projects = () => {
       </div>
 
       <div>
-{/*  */}
+        {/*  */}
         {/* Eventually, the Create New Project code goes in another div here.  Not a component */}
-{/*  */}
+        {/*  */}
       </div>
 
       <div>
-{/*  */}
+        {/*  */}
         {/* Eventually, the All Projects Component goes in another div here.  Bottom, Center of Page */}
-{/*  */}
+        {/*  */}
       </div>
 
       {/* my projects should hug the right side of the page. likely col-3 */}
@@ -63,8 +64,49 @@ const Projects = () => {
           /> */}
         </div>
       </div>
-    </main>
+
+      <div>
+       
+              <div class="container">
+                <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                  <div class="col mb-2">
+                    <div class="p-3 border bg-light">Row column</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+    </main >
   );
+
+
 };
 
 export default Projects;

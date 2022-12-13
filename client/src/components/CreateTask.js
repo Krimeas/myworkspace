@@ -6,9 +6,9 @@ import { CREATE_TASK } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
-const AddTask = ({ projects }) => {
+const CreateTask = ({projectId}) => {
   const [formState, SetFormState] = useState({
-    taskText: "",
+    taskName: "",
   });
 
   const [createTask, { error, data }] = useMutation(CREATE_TASK);
@@ -24,19 +24,17 @@ const AddTask = ({ projects }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
-      // const project = dff;
       const { data } = await createTask({
-        variables: { ...formState },
+        variables: { ...formState, projectId },
       });
       console.log(data);
-      // window.location.assign(`/projects/${project}/${data.createTask._id}`);
+      window.location.assign(`/projects/${projectId}/${data.createTask._id}`);
     } catch (e) {
       console.error(e);
     }
     SetFormState({
-      taskText: "",
+      taskName: "",
     });
   };
 
@@ -56,9 +54,9 @@ const AddTask = ({ projects }) => {
               <input
                 className="form-control"
                 placeholder="Task Name"
-                type="taskText"
-                name="taskText"
-                value={formState.taskText}
+                type="taskName"
+                name="taskName"
+                value={formState.taskName}
                 onChange={handleChange}
               />
             </div>
@@ -71,4 +69,4 @@ const AddTask = ({ projects }) => {
   );
 };
 
-export default AddTask;
+export default CreateTask;

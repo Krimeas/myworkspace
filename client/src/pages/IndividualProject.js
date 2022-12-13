@@ -19,7 +19,6 @@ const SingleProject = () => {
   var {projectId} = useParams();
   const { loading, data } = useQuery(QUERY_PROJECT, {variables: { projectId }});
   const project = data?.GetProjectById || {};
-  console.log(project);
 
   return (
     <Container fluid>
@@ -28,6 +27,7 @@ const SingleProject = () => {
         <div className="text-center row col-xl-12">
           <div className="col-xl-2 justify-content-left bg-primary ">
           {/* <ProjectMessageForm /> */}
+          </div>
         </div>
         {/* <div className="col-12 col-md-8 mb-3">
           {loading ? (
@@ -46,24 +46,25 @@ const SingleProject = () => {
               {loading ? (
                 <div>Loading...</div>
               ) : (
-                <IndividualProject project={project} />
+                <IndividualProject project={project}/>
               )}
             </div>
             <div style={{ border: "1px dotted #1a1a1a" }}>
             {loading ? (
                 <div>Loading...</div>
               ) : (
-                <CreateTask/>
+                <CreateTask projectId={projectId}/>
               )}
             </div>
             {/* <div style={{ border: "1px dotted #1a1a1a" }}>
               <h3>Project Tasks</h3>
-              {loading ? (
+              {/* {loading ? (
                 <div>Loading...</div>
               ) : (
                 <ProjectTask tasks={project} />
-              )}
-            </div> */}
+              )} 
+              </div>
+              */}
           </div>
 
 
@@ -74,7 +75,6 @@ const SingleProject = () => {
           /> */}
           
         </div>
-      </div>
     </main>
     </Container>
   );

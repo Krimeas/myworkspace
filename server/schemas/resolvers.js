@@ -151,7 +151,6 @@ const resolvers = {
         },
         
         createTask: async (parent, { taskName, projectId }, context) => {
-            console.log(context.user);
             if (context.user) {
                 const task = await Task.create({
                     taskName,
@@ -164,6 +163,23 @@ const resolvers = {
                     { _id: projectId },
                     { $addToSet: { tasks: task._id } }
                 )
+                return task;
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        deleteTask: async (parent, { taskName, projectId}, context) => {
+            if(context.user) {
+                const task = await Task.findOneAndDelete({
+                    taskName,
+                    project : projectId
+                });
+
+                await Project.findOneAndUpdate(
+                    {_id: projectId},
+                    { $pull: {tasks: task._id}}
+                )
+
                 return task;
             }
             throw new AuthenticationError('You need to be logged in!');

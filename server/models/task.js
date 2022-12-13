@@ -16,7 +16,7 @@ const taskSchema = new Schema(
         maxlength: 200
     },
 
-    project:
+    projectId:
         {
             type: String,
             required: true,

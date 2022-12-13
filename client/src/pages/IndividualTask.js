@@ -1,5 +1,5 @@
 import React from "react";
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 // import { useMutation } from '@apollo/client';
 import { Container } from "react-bootstrap";
@@ -10,12 +10,17 @@ import { Container } from "react-bootstrap";
 // import IndividualTask from '../components/IndividualTask';
 import DeleteTask from '../components/DeleteTask';
 
-import { QUERY_PROJECT } from '../utils/queries';
+import { QUERY_TASK } from '../utils/queries';
 
 const Tasks = () => {
-  const { loading, data } = useQuery( QUERY_PROJECT );
-  // const comments = data?.comments || [];
-  const projects = data?.GetProjects || [];
+  const {taskId} = useParams();
+  const { loading, data } = useQuery(QUERY_TASK, {
+    variables: {
+      taskId
+    }
+  });
+  const task = data?.GetTask || {};
+  console.log(task);
 
   return (
     <Container fluid>
@@ -25,19 +30,19 @@ const Tasks = () => {
           <div className="col-xl-2 justify-content-left bg-primary ">
             {/* <ProjectMessageForm /> */}
             {/* <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : ( null
-            <ProjectMessageList
-            comments={comments}
-            title="Some Feed for Thought(s)..."
-            />
-          )}
-        </div> */}
-          </div>
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                <ProjectMessageList
+                  comments={comments}
+                  title="Some Feed for Thought(s)..." />
+              )}
+          </div> */}
+        </div>
 
           <div className="col-xl-8" style={{ border: "1px dotted #1a1a1a" }}>
             <h3>Individual Task</h3>
+            <h4>Task Name: {task.taskName}</h4>
             <div>
               {/*  */}
               {/* Eventually, the Name gets pulled and goes here.  Top Center of page, wrapped in blue. */}
@@ -49,8 +54,8 @@ const Tasks = () => {
             {/* {loading ? (
                 <div>Loading...</div>
               ) : (
-                <DeleteTask taskName={projectId}/>
-              )} */}
+                <DeleteTask task={task}/>
+              )}
             </div>
             </div>
           </div>
